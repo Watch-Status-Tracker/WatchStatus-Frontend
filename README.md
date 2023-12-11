@@ -146,7 +146,7 @@ When creating a pull request, please follow these guidelines:
 - `Branch x to y`: Make sure your code is on a branch that's up to date with the `master` or
   `develop` or some other branch (whichever one you're merging into).
 - `PR name`: Name pull request after the branch name. If the branch was named for example
-  `feat/logo-states`, the PR should be named `feat/logo-states` as well.
+  `feat/logo-states`, the PR should be named `feat/logo-states or feat/logo states` as well.
 - `Description`: Provide a detailed description of the changes. Include the purpose of the change,
   the approach you took, any issues or bugs that it resolves, and anything else that reviewers
   should know.
