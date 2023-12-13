@@ -1,17 +1,12 @@
-import { GlobalThemeProvider } from '@theme/GlobalThemeProvider';
 import styled from 'styled-components';
-import GlobalStyle from './styles/globalStyles';
 
 const Root = () => {
   return (
     <>
-      <GlobalThemeProvider>
-        <GlobalStyle />
-        <Wrapper>
-          <Header>Vite + React</Header>
-          <SubHeader>Project starter page</SubHeader>
-        </Wrapper>
-      </GlobalThemeProvider>
+      <Wrapper>
+        <Header>Vite + React</Header>
+        <SubHeader>Project starter page</SubHeader>
+      </Wrapper>
     </>
   );
 };

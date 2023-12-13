@@ -22,7 +22,7 @@ export const defaultTheme = {
       800: '#424242',
       900: '#212121',
     },
-    succes: {
+    success: {
       100: '#D0F1D3',
       200: '#B0E7B6',
       300: '#91DE9A',
@@ -71,12 +71,12 @@ export const defaultTheme = {
         1: '14px',
         2: '12px',
       },
-      weight: {
-        regular: '400',
-        medium: '700',
-        bold: '900',
-      },
     },
+  },
+  weight: {
+    regular: '400',
+    medium: '700',
+    bold: '900',
   },
   spacing: {
     1: '4px',
