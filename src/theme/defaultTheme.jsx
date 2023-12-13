@@ -72,12 +72,13 @@ export const defaultTheme = {
         2: '12px',
       },
     },
+    weight: {
+      regular: '400',
+      medium: '700',
+      bold: '900',
+    },
   },
-  weight: {
-    regular: '400',
-    medium: '700',
-    bold: '900',
-  },
+
   spacing: {
     1: '4px',
     2: '8px',
