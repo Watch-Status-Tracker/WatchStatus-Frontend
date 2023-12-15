@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: ${({ size }) => (size === 'large' ? '150px' : '75px')};
-  gap: ${({ size, theme }) => (size === 'large' ? theme.spacing[3] : theme.spacing[2])};
   cursor: pointer;
 `;
 export const CardContainer = styled.div`
   width: ${({ size }) => (size === 'large' ? '150px' : '75px')};
   height: ${({ size }) => (size === 'large' ? '225px' : '112.5px')};
-  border: 5px solid ${({ theme }) => theme.color.primary[900]};
-  border-radius: 20px;
+  border: ${({ size }) => (size === 'large' ? '5px' : '3px')} solid
+    ${({ theme }) => theme.color.primary[900]};
+  border-radius: ${({ size }) => (size === 'large' ? '20px' : '10px')};
   overflow: hidden;
 `;
 
@@ -25,10 +21,12 @@ export const CardImage = styled.img`
 `;
 
 export const CardTitle = styled.p`
+  max-width: ${({ size }) => (size === 'large' ? '150px' : '75px')};
+  margin-top: ${({ size, theme }) => (size === 'large' ? theme.spacing[3] : theme.spacing[2])};
   font-size: ${({ size, theme }) =>
     size === 'large' ? theme.typography.body : theme.typography.size.small[2]};
   color: ${({ theme }) => theme.color.primary[900]};
-  font-weight: ${({ theme }) => theme.typography.weight.regular};
+  font-weight: ${({ theme }) => theme.typography.weight.medium};
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

@@ -1,20 +1,23 @@
+import {
+  CardContainer,
+  CardImage,
+  CardPlaceholder,
+  CardTitle,
+  Wrapper,
+} from '@components/Card/Card.styles';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { CardContainer, CardImage, CardPlaceholder, CardTitle, Wrapper } from './Card.styles';
-const Card = ({ size, title='Placeholder', isTitleVisible, imageUrl }) => {
+
+const Card = ({ size = 'large', title = 'Placeholder', isTitleVisible = true, imageUrl }) => {
   const [imageError, setImageError] = useState(false);
   const handleImageError = () => {
     setImageError(true);
   };
   return (
-    <Wrapper size={size}>
+    <Wrapper>
       <CardContainer size={size}>
-        {imageUrl ? (
-          !imageError ? (
-            <CardImage src={imageUrl} onError={handleImageError} />
-          ) : (
-            <CardPlaceholder>Image not found</CardPlaceholder>
-          )
+        {imageUrl && !imageError ? (
+          <CardImage src={imageUrl} onError={handleImageError} />
         ) : (
           <CardPlaceholder>Image not found</CardPlaceholder>
         )}
@@ -25,7 +28,7 @@ const Card = ({ size, title='Placeholder', isTitleVisible, imageUrl }) => {
 };
 
 Card.propTypes = {
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['large', 'small']),
   title: PropTypes.string,
   isTitleVisible: PropTypes.bool,
   imageUrl: PropTypes.string,
