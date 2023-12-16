@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ size, theme }) => (size === 'large' ? theme.spacing[3] : theme.spacing[2])};
   cursor: pointer;
 `;
 export const CardContainer = styled.div`
   width: ${({ size }) => (size === 'large' ? '150px' : '75px')};
   height: ${({ size }) => (size === 'large' ? '225px' : '112.5px')};
-  border: ${({ size }) => (size === 'large' ? '5px' : '3px')} solid
-    ${({ theme }) => theme.color.primary[900]};
+  border-width: ${({ size }) => (size === 'large' ? '5px' : '3px')};
+  border-style: solid;
+  border-color: ${({ theme }) => theme.color.primary[900]};
   border-radius: ${({ size }) => (size === 'large' ? '20px' : '10px')};
   overflow: hidden;
 `;
@@ -22,7 +26,6 @@ export const CardImage = styled.img`
 
 export const CardTitle = styled.p`
   max-width: ${({ size }) => (size === 'large' ? '150px' : '75px')};
-  margin-top: ${({ size, theme }) => (size === 'large' ? theme.spacing[3] : theme.spacing[2])};
   font-size: ${({ size, theme }) =>
     size === 'large' ? theme.typography.body : theme.typography.size.small[2]};
   color: ${({ theme }) => theme.color.primary[900]};

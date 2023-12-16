@@ -14,7 +14,7 @@ const Card = ({ size = 'large', title = 'Placeholder', isTitleVisible = true, im
     setImageError(true);
   };
   return (
-    <Wrapper>
+    <Wrapper size={size}>
       <CardContainer size={size}>
         {imageUrl && !imageError ? (
           <CardImage src={imageUrl} onError={handleImageError} />
