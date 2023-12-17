@@ -4,7 +4,7 @@
 
 ### Before merging:
 
-- [] Sync with branch check
-- [] File name check
-- [] Console logs check
-- [] Test check
+- [ ] Sync with branch check
+- [ ] File name check
+- [ ] Console logs check
+- [ ] Test check
