@@ -1,3 +1,5 @@
+export const deviceSize = { mobile: '0px', tablet: '768px', desktop: '1440px' };
+
 export const defaultTheme = {
   color: {
     primary: {
@@ -78,7 +80,6 @@ export const defaultTheme = {
       bold: '700',
     },
   },
-
   spacing: {
     1: '4px',
     2: '8px',
@@ -100,5 +101,10 @@ export const defaultTheme = {
     18: '72px',
     19: '76px',
     20: '80px',
+  },
+  breakpoint: {
+    mobile: `@media (max-width: ${deviceSize.tablet})`,
+    tablet: `@media (min-width: ${deviceSize.tablet}) and (max-width: ${deviceSize.desktop})`,
+    desktop: `@media (min-width: ${deviceSize.desktop})`,
   },
 };
