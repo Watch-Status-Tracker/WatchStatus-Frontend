@@ -74,8 +74,8 @@ export const defaultTheme = {
     },
     weight: {
       regular: '400',
-      medium: '700',
-      bold: '900',
+      medium: '500',
+      bold: '700',
     },
   },
 
