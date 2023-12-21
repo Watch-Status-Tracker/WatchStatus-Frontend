@@ -1,5 +1,16 @@
 import { defaultTheme } from '@theme/defaultTheme';
 
+/**
+ * @param {string} property - CSS property to apply to the breakpoint
+ * @param {object} devices - Object containing the devices to apply the breakpoint to. Currently supports mobile, tablet, and desktop
+ * @returns {string} - CSS string containing the breakpoint
+ * @example
+ * breakpoints('color', {
+ *  mobile: 'red',
+ *  tablet: 'blue',
+ *  desktop: 'green'
+ * })
+ */
 export const breakpoints = (property, devices) => {
   if (!property) {
     throw new TypeError('You must pass a property to the breakpoints function');
