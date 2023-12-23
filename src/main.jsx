@@ -8,7 +8,7 @@ import { RouterProvider } from 'react-router-dom';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <GlobalThemeProvider>
-    <GlobalStyle />
+      <GlobalStyle />
       <RouterProvider router={router} />
     </GlobalThemeProvider>
   </React.StrictMode>
