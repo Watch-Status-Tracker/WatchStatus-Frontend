@@ -5,6 +5,29 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 const RootRoute = {
   path: '/',
   element: <Root />,
+  children: [
+    {
+      path: '/home',
+    },
+    {
+      path: '/mylist',
+    },
+    {
+      path: '/browse',
+    },
+    {
+      path: '/surpriseme',
+    },
+    {
+      path: '/ranking',
+    },
+    {
+      path: '/settings',
+    },
+    {
+      path: '/logout',
+    },
+  ],
 };
 
 const PlaygroundRoute = {

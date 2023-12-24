@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
   width: 100%;
   flex-direction: column;
   gap: 40px;
-  background: linear-gradient(white, #cfcfcf);
+  background: ${({ theme }) => theme.color.dark[100]};
 `;
 
 const Header = styled.h1`
