@@ -1,4 +1,9 @@
 export const deviceSize = { mobile: '0px', tablet: '768px', desktop: '1200px' };
+export const mediaQueryRules = {
+  mobile: `(max-width: ${deviceSize.tablet})`,
+  tablet: `(min-width: ${deviceSize.tablet}) and (max-width: ${deviceSize.desktop})`,
+  desktop: `(min-width: ${deviceSize.desktop})`,
+};
 
 export const defaultTheme = {
   color: {
@@ -103,8 +108,8 @@ export const defaultTheme = {
     20: '80px',
   },
   breakpoint: {
-    mobile: `@media (max-width: ${deviceSize.tablet})`,
-    tablet: `@media (min-width: ${deviceSize.tablet}) and (max-width: ${deviceSize.desktop})`,
-    desktop: `@media (min-width: ${deviceSize.desktop})`,
+    mobile: `@media ${mediaQueryRules.mobile}`,
+    tablet: `@media ${mediaQueryRules.tablet}`,
+    desktop: `@media ${mediaQueryRules.desktop}`,
   },
 };
