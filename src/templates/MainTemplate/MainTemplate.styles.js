@@ -30,9 +30,12 @@ export const NavWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   height: 100%;
   width: 100%;
+  gap: ${({ theme }) => theme.spacing[4]};
 
   ${breakpoints('padding', {
     desktop: '24px 24px 24px 0',
@@ -46,7 +49,7 @@ export const BentoWrapper = styled.div`
   height: 100%;
   background: ${({ theme }) => theme.color.dark[100]};
   border-radius: 30px;
-  padding: 20px;
+  padding: ${({ theme }) => theme.spacing[5]};
   overflow: hidden;
 `;
 
@@ -55,4 +58,14 @@ export const BentoContent = styled.div`
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
+`;
+
+export const AccountBarPlaceholder = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 58px;
+  border-radius: 20px;
+  background: ${({ theme }) => theme.color.primary[900]};
+  padding: ${({ theme }) => theme.spacing[4]};
 `;
