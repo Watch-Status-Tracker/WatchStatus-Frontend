@@ -1,4 +1,4 @@
-export const deviceSize = { mobile: '0px', tablet: '768px', desktop: '1440px' };
+export const deviceSize = { mobile: '0px', tablet: '768px', desktop: '1200px' };
 
 export const defaultTheme = {
   color: {
