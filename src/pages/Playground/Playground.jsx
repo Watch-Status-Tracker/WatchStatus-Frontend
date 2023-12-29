@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 const Playground = () => {
   return (
-    <Wrapper>
+    <Placeholder>
       <p>Page for e.g. component testing</p>
-    </Wrapper>
+    </Placeholder>
   );
 };
 
 export default Playground;
 
-const Wrapper = styled.div`
+const Placeholder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
