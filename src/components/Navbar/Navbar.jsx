@@ -3,32 +3,36 @@ import { ListContainer, NavContainer, Wrapper } from '@components/Navbar/Navbar.
 import NavbarItem from '@components/Navbar/NavbarItem/NavbarItem';
 import PropTypes from 'prop-types';
 
-const Navbar = ({ isDesktop = true }) => {
+const Navbar = ({ size = 'full' }) => {
   return (
     <Wrapper>
-      {isDesktop && <AccountBox />}
+      {size === 'full' && <AccountBox />}
       <NavContainer>
         <ListContainer>
-          <NavbarItem isTextVisible={isDesktop} to="/home">
+          <NavbarItem isTextVisible={size} to="/home">
             Home
           </NavbarItem>
-          <NavbarItem isTextVisible={isDesktop} to="/mylist">
+          <NavbarItem isTextVisible={size} to="/mylist">
             My list
           </NavbarItem>
-          <NavbarItem isTextVisible={isDesktop} to="/browse">
+          <NavbarItem isTextVisible={size} to="/browse">
             Browse
           </NavbarItem>
-          <NavbarItem isTextVisible={isDesktop} to="/surpriseme">
+          <NavbarItem isTextVisible={size} to="/surpriseme">
             Suprise me
           </NavbarItem>
-          <NavbarItem isTextVisible={isDesktop} to="/ranking">
+          <NavbarItem isTextVisible={size} to="/ranking">
             Ranking
           </NavbarItem>
         </ListContainer>
-        {isDesktop && (
+        {size === 'full' && (
           <ListContainer>
-            <NavbarItem to="/settings">Settings</NavbarItem>
-            <NavbarItem to="/logout">Log out</NavbarItem>
+            <NavbarItem isTextVisible={size} to="/settings">
+              Settings
+            </NavbarItem>
+            <NavbarItem isTextVisible={size} to="/logout">
+              Log out
+            </NavbarItem>
           </ListContainer>
         )}
       </NavContainer>
@@ -37,7 +41,7 @@ const Navbar = ({ isDesktop = true }) => {
 };
 
 Navbar.propTypes = {
-  isDesktop: PropTypes.bool,
+  size: PropTypes.oneOf(['full', 'compact']),
 };
 
 export default Navbar;

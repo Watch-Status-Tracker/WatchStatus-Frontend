@@ -24,14 +24,11 @@ export const StyledLink = styled(Link)`
     isActive ? theme.color.dark[100] : theme.color.primary[500]};
   text-decoration: none;
   ${breakpoints('justify-content', {
-    desktop: '',
     tablet: 'center',
     mobile: 'center',
   })}
   ${breakpoints('gap', {
     desktop: '16px',
-    tablet: '0px',
-    mobile: '0px',
   })}
   ${breakpoints('width', {
     desktop: '200px',
@@ -81,19 +78,15 @@ export const StyledLink = styled(Link)`
       mobile: '0px',
     })}
     ${breakpoints('right', {
-      desktop: '0px',
       tablet: '-15px',
       mobile: '-15px',
     })}
     ${breakpoints('border-top-left-radius', {
-      desktop: '0px',
       tablet: '15px',
       mobile: '15px',
     })}
       ${breakpoints('border-bottom-right-radius', {
       desktop: '15px',
-      tablet: '0px',
-      mobile: '0px',
     })}
       ${breakpoints('box-shadow', {
       desktop: `4px 4px 0 4px ${defaultTheme.color.dark[100]}`,
@@ -103,17 +96,13 @@ export const StyledLink = styled(Link)`
   }
   &::after {
     ${breakpoints('top', {
-      desktop: '',
       tablet: '0px',
       mobile: '0px',
     })}
     ${breakpoints('bottom', {
       desktop: '-15px',
-      tablet: '0px',
-      mobile: '0px',
     })}
     ${breakpoints('left', {
-      desktop: '',
       tablet: '-15px',
       mobile: '-15px',
     })}

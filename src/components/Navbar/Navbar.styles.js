@@ -17,8 +17,6 @@ export const Wrapper = styled.div`
   })}
   ${breakpoints('gap', {
     desktop: `40px`,
-    tablet: '0px',
-    mobile: '0px',
   })}
   ${breakpoints('width', {
     desktop: '220px',
@@ -58,7 +56,5 @@ export const ListContainer = styled.div`
   })}
   ${breakpoints('gap', {
     desktop: '16px',
-    tablet: '0px',
-    mobile: '0px',
   })}
 `;
