@@ -1,37 +1,40 @@
+import { breakpoints } from '@utils/breakpointSizing';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing[10]};
-  padding: 40px 0 20px 0;
-  width: 220px;
-  height: 900px;
   background-color: ${({ theme }) => theme.color.primary[500]};
-  @media (max-width: 1024px) {
-    align-items: center;
-    flex-direction: row;
-    padding: 0 40px;
-    gap: 0px;
-    width: 100%;
-    height: 58px;
-  }
-`;
-
-export const ListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: initial;
-  gap: ${({ theme }) => theme.spacing[4]};
-  @media (max-width: 1024px) {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 0px;
-    &:last-child {
-      display: none;
-    }
-  }
+  overflow: hidden;
+  ${breakpoints('align-items', {
+    desktop: 'flex-end',
+    tablet: 'center',
+    mobile: 'center',
+  })}
+  ${breakpoints('flex-direction', {
+    desktop: 'column',
+    tablet: 'row',
+    mobile: 'row',
+  })}
+  ${breakpoints('gap', {
+    desktop: `40px`,
+    tablet: '0px',
+    mobile: '0px',
+  })}
+  ${breakpoints('width', {
+    desktop: '220px',
+    tablet: '100%',
+    mobile: '100%',
+  })}
+    ${breakpoints('height', {
+    desktop: '100%',
+    tablet: '58px',
+    mobile: '58px',
+  })}
+  ${breakpoints('padding', {
+    desktop: '40px 0px 20px 0px',
+    tablet: '0px 40px',
+    mobile: '0px 40px',
+  })}
 `;
 
 export const NavContainer = styled.nav`
@@ -39,4 +42,23 @@ export const NavContainer = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
+`;
+
+export const ListContainer = styled.div`
+  display: flex;
+  ${breakpoints('flex-direction', {
+    desktop: 'column',
+    tablet: 'row',
+    mobile: 'row',
+  })}
+  ${breakpoints('justify-content', {
+    desktop: '',
+    tablet: 'space-between',
+    mobile: 'space-between',
+  })}
+  ${breakpoints('gap', {
+    desktop: '16px',
+    tablet: '0px',
+    mobile: '0px',
+  })}
 `;

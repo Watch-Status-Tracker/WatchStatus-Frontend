@@ -5,6 +5,7 @@ import {
   UserNameText,
   Wrapper,
 } from '@components/AccountBox/AccoutBox.styles';
+
 const AccountBox = () => {
   return (
     <Wrapper>

@@ -10,10 +10,8 @@ export const Wrapper = styled.div`
   height: auto;
   background-color: ${({ theme }) => theme.color.primary[900]};
   border-radius: 15px;
-  @media (max-width: 1024px) {
-    display: none;
-  }
 `;
+
 export const ImgContainer = styled.div`
   display: flex;
   align-items: flex-start;
