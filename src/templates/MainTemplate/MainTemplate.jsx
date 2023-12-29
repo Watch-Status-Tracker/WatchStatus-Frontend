@@ -16,7 +16,7 @@ const MainTemplate = () => {
       <NavWrapper />
       <ContentWrapper>
         {/* Replace with proper component later */}
-        {device !== 'desktop' && <AccountBarPlaceholder>test</AccountBarPlaceholder>}{' '}
+        {device !== 'desktop' && <AccountBarPlaceholder />}
         <BentoWrapper>
           <BentoContent>
             <Outlet />
