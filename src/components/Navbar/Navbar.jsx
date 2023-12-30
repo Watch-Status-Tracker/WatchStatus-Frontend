@@ -9,30 +9,16 @@ const Navbar = ({ size = 'full' }) => {
       {size === 'full' && <AccountBox />}
       <NavContainer>
         <ListContainer>
-          <NavbarItem isTextVisible={size} to="/home">
-            Home
-          </NavbarItem>
-          <NavbarItem isTextVisible={size} to="/mylist">
-            My list
-          </NavbarItem>
-          <NavbarItem isTextVisible={size} to="/browse">
-            Browse
-          </NavbarItem>
-          <NavbarItem isTextVisible={size} to="/surpriseme">
-            Suprise me
-          </NavbarItem>
-          <NavbarItem isTextVisible={size} to="/ranking">
-            Ranking
-          </NavbarItem>
+          <NavbarItem text="Home" isTextVisible={size} to="/home" />
+          <NavbarItem text="My list" isTextVisible={size} to="/mylist" />
+          <NavbarItem text="Browse" isTextVisible={size} to="/browse" />
+          <NavbarItem text="Surprise me" isTextVisible={size} to="/surpriseme" />
+          <NavbarItem text="Ranking" isTextVisible={size} to="/ranking" />
         </ListContainer>
         {size === 'full' && (
           <ListContainer>
-            <NavbarItem isTextVisible={size} to="/settings">
-              Settings
-            </NavbarItem>
-            <NavbarItem isTextVisible={size} to="/logout">
-              Log out
-            </NavbarItem>
+            <NavbarItem text="Settings" isTextVisible={size} to="/settings" />
+            <NavbarItem text="Log out" isTextVisible={size} to="/logout" />
           </ListContainer>
         )}
       </NavContainer>

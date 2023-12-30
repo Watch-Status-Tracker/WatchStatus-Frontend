@@ -6,18 +6,19 @@ import {
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 
-const NavbarItem = ({ children, to, onClick, isTextVisible }) => {
+const NavbarItem = ({ text, to, onClick, isTextVisible }) => {
   const { pathname } = useLocation();
+  const isActive = to === pathname;
   return (
-    <StyledLink isActive={to === pathname} to={to} onClick={onClick}>
-      <IconPlaceHolder isActive={to === pathname} />
-      {isTextVisible === 'full' && <LinkText isActive={to === pathname}>{children}</LinkText>}
+    <StyledLink isActive={isActive} to={to} onClick={onClick}>
+      <IconPlaceHolder isActive={isActive} />
+      {isTextVisible === 'full' && <LinkText isActive={isActive}>{text}</LinkText>}
     </StyledLink>
   );
 };
 
 NavbarItem.propTypes = {
-  children: PropTypes.string,
+  text: PropTypes.string,
   to: PropTypes.string,
   onClick: PropTypes.func,
   isTextVisible: PropTypes.oneOf(['full', 'compact']),
