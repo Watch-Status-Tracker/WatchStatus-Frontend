@@ -1,3 +1,4 @@
+import { breakpoints } from '@utils/breakpointSizing';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -6,10 +7,15 @@ export const Wrapper = styled.div`
   align-self: center;
   gap: ${({ theme }) => theme.spacing[3]};
   padding: 8px 16px;
-  width: 180px;
   height: auto;
   background-color: ${({ theme }) => theme.color.primary[900]};
   border-radius: 15px;
+
+  ${breakpoints('width', {
+    desktop: '180px',
+    tablet: '100%',
+    mobile: '100%',
+  })}
 `;
 
 export const ImgContainer = styled.div`

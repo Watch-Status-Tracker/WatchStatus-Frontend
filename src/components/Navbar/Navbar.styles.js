@@ -33,9 +33,9 @@ export const Wrapper = styled.div`
   })}
 
   ${breakpoints('padding', {
-    desktop: '40px 0px 20px 0px',
-    tablet: '0px 40px',
-    mobile: '0px 40px',
+    desktop: '40px 0px 56px 0px',
+    tablet: '0px 56px',
+    mobile: '0px 56px',
   })}
 `;
 
