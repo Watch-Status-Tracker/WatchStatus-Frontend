@@ -1,7 +1,7 @@
+import AccountBox from '@components/AccountBox/AccountBox';
 import Navbar from '@components/Navbar/Navbar';
 import { useMediaQuery } from '@hooks/useMediaQuery/useMediaQuery';
 import {
-  AccountBarPlaceholder,
   BentoContent,
   BentoWrapper,
   ContentWrapper,
@@ -17,8 +17,7 @@ const MainTemplate = () => {
     <Wrapper>
       <Navbar variant={navbarVariant} />
       <ContentWrapper>
-        {/* Replace with proper component later */}
-        {device !== 'desktop' && <AccountBarPlaceholder />}
+        {device !== 'desktop' && <AccountBox />}
         <BentoWrapper>
           <BentoContent>
             <Outlet />

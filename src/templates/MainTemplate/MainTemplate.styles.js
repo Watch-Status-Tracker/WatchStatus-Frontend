@@ -59,13 +59,3 @@ export const BentoContent = styled.div`
   border-radius: 20px;
   overflow: hidden;
 `;
-
-export const AccountBarPlaceholder = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 58px;
-  border-radius: 20px;
-  background: ${({ theme }) => theme.color.primary[900]};
-  padding: ${({ theme }) => theme.spacing[4]};
-`;
