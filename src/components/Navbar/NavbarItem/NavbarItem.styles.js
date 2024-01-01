@@ -6,20 +6,6 @@ import { breakpoints } from '@utils/breakpointSizing';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const IconPlaceHolder = styled.div`
-  width: 24px;
-  height: 24px;
-  background-color: ${({ theme }) => theme.color.primary[100]};
-  z-index: 2;
-`;
-export const LinkText = styled.div`
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.color.primary[500] : theme.color.primary[100]};
-  font-weight: ${({ theme }) => theme.typography.weight.bold};
-  font-size: ${({ theme }) => theme.typography.size.small[1]};
-  transition: padding-left 0.1s ease-in-out;
-`;
-
 export const Wrapper = styled.div`
   z-index: ${({ isActive }) => isActive && 1};
 `;
@@ -32,6 +18,10 @@ export const StyledLink = styled(Link)`
     isActive ? theme.color.dark[100] : theme.color.primary[500]};
   text-decoration: none;
   transition: background-color 0.1s ease-in-out;
+
+  & svg {
+    fill: ${({ theme }) => theme.color.primary[200]};
+  }
 
   ${breakpoints('justify-content', {
     tablet: 'center',
@@ -67,10 +57,6 @@ export const StyledLink = styled(Link)`
   &:hover {
     background: ${({ theme, isActive }) => !isActive && theme.color.primary[600]};
     transition: box-shadow 0.1s ease-in-out;
-
-    & > ${IconPlaceHolder} {
-      background-color: ${({ theme }) => theme.color.primary[100]};
-    }
 
     & > ${LinkText} {
       color: ${({ theme, isActive }) => !isActive && theme.color.base.white};
@@ -146,4 +132,12 @@ export const StyledLink = styled(Link)`
       mobile: '0 50px 0 0',
     })};
   }
+`;
+
+export const LinkText = styled.div`
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.color.primary[500] : theme.color.primary[100]};
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  font-size: ${({ theme }) => theme.typography.size.small[1]};
+  transition: padding-left 0.1s ease-in-out;
 `;
