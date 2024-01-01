@@ -12,6 +12,11 @@ import {
 import PropTypes from 'prop-types';
 
 const Navbar = ({ variant = 'full' }) => {
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    alert('Log out');
+  };
+
   return (
     <Wrapper>
       {variant === 'full' && <AccountBox />}
@@ -26,6 +31,7 @@ const Navbar = ({ variant = 'full' }) => {
         {variant === 'full' && (
           <ListContainer>
             <NavbarItem text="Settings" variant={variant} to={settingsPath} />
+            <NavbarItem text="Log out" variant={variant} onClick={handleLogOut} />
           </ListContainer>
         )}
       </NavContainer>
