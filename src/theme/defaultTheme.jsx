@@ -7,6 +7,10 @@ export const mediaQueryRules = {
 
 export const defaultTheme = {
   color: {
+    base: {
+      white: '#FFFFFF',
+      black: '#000000',
+    },
     primary: {
       100: '#C2BFE3',
       200: '#AEA9DA',
