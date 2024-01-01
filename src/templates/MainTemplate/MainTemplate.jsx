@@ -1,19 +1,21 @@
+import Navbar from '@components/Navbar/Navbar';
 import { useMediaQuery } from '@hooks/useMediaQuery/useMediaQuery';
 import {
   AccountBarPlaceholder,
   BentoContent,
   BentoWrapper,
   ContentWrapper,
-  NavWrapper,
   Wrapper,
 } from '@templates/MainTemplate/MainTemplate.styles';
 import { Outlet } from 'react-router-dom';
 
 const MainTemplate = () => {
   const device = useMediaQuery();
+  const navbarVariant = device === 'desktop' ? 'full' : 'compact';
+
   return (
     <Wrapper>
-      <NavWrapper />
+      <Navbar variant={navbarVariant} />
       <ContentWrapper>
         {/* Replace with proper component later */}
         {device !== 'desktop' && <AccountBarPlaceholder />}
