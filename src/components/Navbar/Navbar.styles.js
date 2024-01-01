@@ -48,6 +48,7 @@ export const NavContainer = styled.nav`
 
 export const ListContainer = styled.div`
   display: flex;
+  position: relative;
 
   ${breakpoints('flex-direction', {
     desktop: 'column',
