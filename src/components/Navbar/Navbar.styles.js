@@ -8,8 +8,6 @@ export const Wrapper = styled.div`
 
   ${breakpoints('align-items', {
     desktop: 'flex-end',
-    tablet: 'center',
-    mobile: 'center',
   })}
 
   ${breakpoints('flex-direction', {
@@ -28,8 +26,8 @@ export const Wrapper = styled.div`
 
     ${breakpoints('height', {
     desktop: '100%',
-    tablet: '58px',
-    mobile: '58px',
+    tablet: '70px',
+    mobile: '70px',
   })}
 
   ${breakpoints('padding', {
