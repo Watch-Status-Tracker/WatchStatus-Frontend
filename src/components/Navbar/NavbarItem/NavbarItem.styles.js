@@ -10,6 +10,14 @@ export const Wrapper = styled.div`
   z-index: ${({ isActive }) => isActive && 1};
 `;
 
+export const LinkText = styled.div`
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.color.primary[500] : theme.color.primary[100]};
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  font-size: ${({ theme }) => theme.typography.size.small[1]};
+  transition: padding-left 0.1s ease-in-out;
+`;
+
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -132,12 +140,4 @@ export const StyledLink = styled(Link)`
       mobile: '0 50px 0 0',
     })};
   }
-`;
-
-export const LinkText = styled.div`
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.color.primary[500] : theme.color.primary[100]};
-  font-weight: ${({ theme }) => theme.typography.weight.bold};
-  font-size: ${({ theme }) => theme.typography.size.small[1]};
-  transition: padding-left 0.1s ease-in-out;
 `;
