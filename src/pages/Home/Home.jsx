@@ -1,18 +1,14 @@
-import styled from 'styled-components';
+import BentoBox from '@components/BentoBox/BentoBox';
+import Card from '@components/Card/Card';
 
 const Home = () => {
-  return <Placeholder>Home Page</Placeholder>;
+  return (
+    <>
+      <BentoBox>
+        <Card />
+      </BentoBox>
+    </>
+  );
 };
 
 export default Home;
-
-const Placeholder = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-size: ${({ theme }) => theme.typography.size.heading[1]};
-  font-weight: ${({ theme }) => theme.typography.weight.bold};
-  color: ${({ theme }) => theme.color.primary[900]};
-`;
