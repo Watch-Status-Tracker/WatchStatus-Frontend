@@ -4,16 +4,12 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: ${({ size }) => (size === 'large' ? '40px' : '20px')};
   width: 100%;
   background-color: ${({ theme }) => theme.color.base.white};
   border-radius: 30px;
   padding: ${({ size }) => (size === 'large' ? '40px' : '30px')};
-
-  ${breakpoints('gap', {
-    desktop: '40px',
-    tablet: '20px',
-    mobile: '20px',
-  })}
+  overflow: hidden;
 `;
 
 export const ContentWrapper = styled.div`
@@ -22,12 +18,12 @@ export const ContentWrapper = styled.div`
 `;
 export const PlaceholderContent = styled.div`
   display: flex;
-  
-   ${breakpoints('height', {
-      desktop: '40px',
-      tablet: '25px',
-      mobile: '25px',
-    })}
+
+  ${breakpoints('height', {
+    desktop: '40px',
+    tablet: '25px',
+    mobile: '25px',
+  })}
 `;
 
 export const PlaceholderText = styled.h1`
