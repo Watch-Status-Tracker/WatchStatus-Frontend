@@ -1,4 +1,3 @@
-import { breakpoints } from '@utils/breakpointSizing';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -10,26 +9,4 @@ export const Wrapper = styled.div`
   border-radius: 30px;
   padding: ${({ size }) => (size === 'large' ? '40px' : '30px')};
   overflow: hidden;
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  gap: ${({ size }) => (size === 'large' ? '40px' : '20px')};
-`;
-export const PlaceholderContent = styled.div`
-  display: flex;
-
-  ${breakpoints('height', {
-    desktop: '40px',
-    tablet: '25px',
-    mobile: '25px',
-  })}
-`;
-
-export const PlaceholderText = styled.h1`
-  ${breakpoints('font-size', {
-    desktop: '28px',
-    tablet: '20px',
-    mobile: '20px',
-  })}
 `;
