@@ -71,6 +71,8 @@ export const SelectDropdown = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  scrollbar-width: none;
 `;
 
 export const SelectDropdownOption = styled.div`
