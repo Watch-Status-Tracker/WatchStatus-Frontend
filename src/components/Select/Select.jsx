@@ -1,5 +1,6 @@
 import {
   Label,
+  OuterWrapper,
   SelectDropdown,
   SelectDropdownOption,
   SelectElement,
@@ -8,14 +9,14 @@ import {
   Wrapper,
 } from '@components/Select/Select.styles';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 const Select = ({
   size = 'large',
   label = 'Label placeholder',
   // isMulti = false,
   isLabelVisible = true,
-  placeholder = 'Select an option dfsd fs dfs fsd fsd fsd fsd  f  ghhgghghgh  gh ghgh  ',
+  placeholder = 'Select an option',
   width,
   onChange,
   value,
@@ -23,6 +24,29 @@ const Select = ({
 }) => {
   const [dropdownValue, setDropdownValue] = useState(value || null);
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownWidth, setDropdownWidth] = useState(null);
+
+  const outerWrapperRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const currentRef = outerWrapperRef.current;
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (!Array.isArray(entries) || !entries.length) {
+        return;
+      }
+      setDropdownWidth(entries[0].contentRect.width);
+    });
+
+    if (currentRef) {
+      resizeObserver.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        resizeObserver.unobserve(currentRef);
+      }
+    };
+  }, []);
 
   const handleOpenDropdown = () => {
     setIsOpen(!isOpen);
@@ -48,18 +72,21 @@ const Select = ({
       ))) || <SelectDropdownOption>No data</SelectDropdownOption>;
 
   return (
-    <Wrapper width={width}>
-      {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
-      <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>
-        <SelectElement>
-          <SelectedValue isPlaceholder={!dropdownValue}>
-            {dropdownValue || placeholder}
-          </SelectedValue>
-        </SelectElement>
-      </SelectWrapper>
-
-      <SelectDropdown isOpen={isOpen}>{generateOptions()}</SelectDropdown>
-    </Wrapper>
+    <OuterWrapper ref={outerWrapperRef}>
+      <Wrapper width={width}>
+        {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
+        <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>
+          <SelectElement>
+            <SelectedValue isPlaceholder={!dropdownValue}>
+              {dropdownValue || placeholder}
+            </SelectedValue>
+          </SelectElement>
+        </SelectWrapper>
+        <SelectDropdown size={size} width={dropdownWidth} isOpen={isOpen}>
+          {generateOptions()}
+        </SelectDropdown>
+      </Wrapper>
+    </OuterWrapper>
   );
 };
 
