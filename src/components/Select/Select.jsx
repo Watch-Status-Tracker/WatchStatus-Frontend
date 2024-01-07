@@ -3,6 +3,7 @@ import {
   OuterWrapper,
   SelectDropdown,
   SelectDropdownOption,
+  SelectDropdownPlaceholder,
   SelectElement,
   SelectWrapper,
   SelectedValue,
@@ -69,10 +70,10 @@ const Select = ({
         >
           <SelectedValue>{option}</SelectedValue>
         </SelectDropdownOption>
-      ))) || <SelectDropdownOption>No data</SelectDropdownOption>;
+      ))) || <SelectDropdownPlaceholder>No data</SelectDropdownPlaceholder>;
 
   return (
-    <OuterWrapper ref={outerWrapperRef}>
+    <OuterWrapper width={width} ref={outerWrapperRef}>
       <Wrapper width={width}>
         {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
         <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>

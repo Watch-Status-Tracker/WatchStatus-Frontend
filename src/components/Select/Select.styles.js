@@ -5,7 +5,8 @@ const boxShadowOffsetPadding = 2;
 export const OuterWrapper = styled.div`
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: ${({ width }) => width || '100%'};
+  /* width: 100%; */
 `;
 
 export const Wrapper = styled.div`
@@ -62,6 +63,7 @@ export const SelectElement = styled.div`
 
 export const SelectDropdown = styled.div`
   width: ${({ width }) => width - boxShadowOffsetPadding * 2}px;
+  height: 100%;
   max-height: 150px;
   position: fixed;
   margin-top: ${({ size }) => (size === 'large' ? '220px' : '210px')};
@@ -99,6 +101,15 @@ export const SelectDropdownOption = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.color.primary[100]};
   }
+`;
+
+export const SelectDropdownPlaceholder = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: ${({ theme }) => theme.color.primary[900]};
 `;
 
 export const SelectedValue = styled.div`
