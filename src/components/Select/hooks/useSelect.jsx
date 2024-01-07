@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 
 export const useSelect = (ref, isMulti, onChange, value) => {
   const [dropdownWidth, setDropdownWidth] = useState(null);
@@ -13,6 +13,7 @@ export const useSelect = (ref, isMulti, onChange, value) => {
       if (!Array.isArray(entries) || !entries.length) {
         return;
       }
+
       setDropdownWidth(entries[0].contentRect.width);
     });
 
@@ -27,28 +28,30 @@ export const useSelect = (ref, isMulti, onChange, value) => {
     };
   }, [ref]);
 
-  const handleOptionClick = (e) => {
-    if (isMulti) {
-      if (dropdownValue.includes(e.currentTarget.getAttribute('value'))) {
-        const newValue = dropdownValue.filter(
-          (value) => value !== e.currentTarget.getAttribute('value')
-        );
+  const handleOptionClick = useCallback(
+    (e) => {
+      const currentTargetValue = e.currentTarget.getAttribute('value');
+      if (isMulti) {
+        if (dropdownValue.includes(currentTargetValue)) {
+          const newValue = dropdownValue.filter((value) => value !== currentTargetValue);
+          onChange && onChange({ ...e, target: { value: newValue } });
+          setDropdownValue(newValue);
+          return;
+        }
+        const newValue = [...dropdownValue, currentTargetValue];
         onChange && onChange({ ...e, target: { value: newValue } });
         setDropdownValue(newValue);
         return;
       }
-      const newValue = [...dropdownValue, e.currentTarget.getAttribute('value')];
-      onChange && onChange({ ...e, target: { value: newValue } });
-      setDropdownValue(newValue);
-      return;
-    }
-    onChange && onChange({ ...e, target: { value: e.currentTarget.getAttribute('value') } });
-    setDropdownValue(e.currentTarget.getAttribute('value'));
-    setIsOpen(false);
-  };
+      onChange && onChange({ ...e, target: { value: currentTargetValue } });
+      setDropdownValue(currentTargetValue);
+      setIsOpen(false);
+    },
+    [isMulti, dropdownValue, onChange]
+  );
 
   const handleOpenDropdown = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((state) => !state);
   };
 
   return { dropdownWidth, handleOptionClick, setIsOpen, isOpen, dropdownValue, handleOpenDropdown };

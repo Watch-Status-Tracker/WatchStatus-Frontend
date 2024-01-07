@@ -126,7 +126,6 @@ export const SelectedValue = styled.p`
 `;
 
 export const SelectedMultiValue = styled.div`
-  width: 100%;
   align-items: center;
   justify-content: ${({ isPlaceholder }) => (isPlaceholder ? 'flex-start' : 'center')};
   padding: ${({ theme }) => `${theme.spacing[1]} ${theme.spacing[2]}`};
@@ -141,6 +140,7 @@ export const SelectedMultiValue = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    min-width: 0;
   }
 
   flex: 5;
