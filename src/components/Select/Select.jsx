@@ -6,16 +6,18 @@ import {
   SelectDropdownPlaceholder,
   SelectElement,
   SelectWrapper,
+  SelectedMultiValue,
   SelectedValue,
   Wrapper,
 } from '@components/Select/Select.styles';
+import { useSelect } from '@components/Select/hooks/useSelect';
 import PropTypes from 'prop-types';
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 
 const Select = ({
   size = 'large',
   label = 'Label placeholder',
-  // isMulti = false,
+  isMulti = false,
   isLabelVisible = true,
   placeholder = 'Select an option',
   width,
@@ -23,54 +25,48 @@ const Select = ({
   value,
   options,
 }) => {
-  const [dropdownValue, setDropdownValue] = useState(value || null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [dropdownWidth, setDropdownWidth] = useState(null);
-
   const outerWrapperRef = useRef(null);
 
-  useLayoutEffect(() => {
-    const currentRef = outerWrapperRef.current;
-    const resizeObserver = new ResizeObserver((entries) => {
-      if (!Array.isArray(entries) || !entries.length) {
-        return;
-      }
-      setDropdownWidth(entries[0].contentRect.width);
-    });
+  const { dropdownWidth, isOpen, dropdownValue, handleOptionClick, handleOpenDropdown } = useSelect(
+    outerWrapperRef,
+    isMulti,
+    onChange,
+    value
+  );
 
-    if (currentRef) {
-      resizeObserver.observe(currentRef);
-    }
+  const renderOption = (option) => {
+    const isOptionSelected = (option) =>
+      isMulti ? dropdownValue.includes(option) : dropdownValue === option;
 
-    return () => {
-      if (currentRef) {
-        resizeObserver.unobserve(currentRef);
-      }
-    };
-  }, []);
-
-  const handleOpenDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleOptionClick = (e) => {
-    onChange && onChange({ ...e, target: { value: e.currentTarget.getAttribute('value') } });
-    setDropdownValue(e.currentTarget.getAttribute('value'));
-    setIsOpen(false);
+    return (
+      <SelectDropdownOption
+        key={option}
+        isMulti={isMulti}
+        isSelected={isOptionSelected(option)}
+        value={option}
+        size={size}
+        onClick={handleOptionClick}
+      >
+        <SelectedValue>{option}</SelectedValue>
+      </SelectDropdownOption>
+    );
   };
 
   const generateOptions = () =>
-    (options &&
-      options.map((option, index) => (
-        <SelectDropdownOption
-          key={`${option}-${index}`}
-          value={option}
-          size={size}
-          onClick={handleOptionClick}
-        >
-          <SelectedValue>{option}</SelectedValue>
-        </SelectDropdownOption>
-      ))) || <SelectDropdownPlaceholder>No data</SelectDropdownPlaceholder>;
+    options.length ? (
+      options.map(renderOption)
+    ) : (
+      <SelectDropdownPlaceholder>No data</SelectDropdownPlaceholder>
+    );
+
+  const renderMultiValue = (value, isPlaceholder) => (
+    <SelectedMultiValue key={value} size={size} isMulti={isMulti} isPlaceholder={isPlaceholder}>
+      {value}
+    </SelectedMultiValue>
+  );
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const generatedOptions = useMemo(() => generateOptions(), [options]);
 
   return (
     <OuterWrapper width={width} ref={outerWrapperRef}>
@@ -78,13 +74,21 @@ const Select = ({
         {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
         <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>
           <SelectElement>
-            <SelectedValue isPlaceholder={!dropdownValue}>
-              {dropdownValue || placeholder}
-            </SelectedValue>
+            {isMulti ? (
+              <>
+                {renderMultiValue(dropdownValue[0] || placeholder, !dropdownValue.length)}
+                {dropdownValue.length > 1 &&
+                  renderMultiValue(`+${dropdownValue.length - 1}`, !dropdownValue)}
+              </>
+            ) : (
+              <SelectedValue isPlaceholder={!dropdownValue}>
+                {dropdownValue || placeholder}
+              </SelectedValue>
+            )}
           </SelectElement>
         </SelectWrapper>
         <SelectDropdown size={size} width={dropdownWidth} isOpen={isOpen}>
-          {generateOptions()}
+          {generatedOptions}
         </SelectDropdown>
       </Wrapper>
     </OuterWrapper>
@@ -104,7 +108,7 @@ Select.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
   ]),
   options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };

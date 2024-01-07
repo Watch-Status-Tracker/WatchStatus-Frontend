@@ -6,7 +6,6 @@ export const OuterWrapper = styled.div`
   position: relative;
   overflow: hidden;
   width: ${({ width }) => width || '100%'};
-  /* width: 100%; */
 `;
 
 export const Wrapper = styled.div`
@@ -56,9 +55,9 @@ export const SelectElement = styled.div`
   text-overflow: ellipsis;
   display: flex;
   align-items: center;
-  background-color: transparent;
   padding: ${({ theme }) => `0 ${theme.spacing[3]}`};
   font-size: ${({ theme }) => theme.typography.size.small[1]};
+  gap: ${({ theme }) => theme.spacing[1]};
 `;
 
 export const SelectDropdown = styled.div`
@@ -75,12 +74,11 @@ export const SelectDropdown = styled.div`
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
   transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-10px)')};
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
   }
-
-  scrollbar-width: none;
 `;
 
 export const SelectDropdownOption = styled.div`
@@ -91,15 +89,20 @@ export const SelectDropdownOption = styled.div`
   align-items: center;
   font-size: ${({ theme }) => theme.typography.size.small[1]};
   font-weight: ${({ theme }) => theme.typography.weight.regular};
-  color: ${({ theme }) => theme.color.primary[900]};
   cursor: pointer;
   transition: 0.2s ease-in-out;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  background-color: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.primary[900] : theme.color.base.white};
+
+  & p {
+    color: ${({ theme, isSelected }) => isSelected && theme.color.base.white};
+  }
 
   &:hover {
-    background-color: ${({ theme }) => theme.color.primary[100]};
+    background-color: ${({ theme, isSelected }) => !isSelected && theme.color.primary[100]};
   }
 `;
 
@@ -112,7 +115,7 @@ export const SelectDropdownPlaceholder = styled.div`
   color: ${({ theme }) => theme.color.primary[900]};
 `;
 
-export const SelectedValue = styled.div`
+export const SelectedValue = styled.p`
   color: ${({ theme, isPlaceholder }) =>
     isPlaceholder ? theme.color.dark[500] : theme.color.primary[500]};
   font-weight: ${({ theme, isPlaceholder }) =>
@@ -120,4 +123,28 @@ export const SelectedValue = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const SelectedMultiValue = styled.div`
+  width: 100%;
+  align-items: center;
+  justify-content: ${({ isPlaceholder }) => (isPlaceholder ? 'flex-start' : 'center')};
+  padding: ${({ theme }) => `${theme.spacing[1]} ${theme.spacing[2]}`};
+  border-radius: 5px;
+  font-size: ${({ theme }) => theme.typography.size.small[1]};
+  color: ${({ theme, isPlaceholder }) =>
+    isPlaceholder ? theme.color.dark[500] : theme.color.base.white};
+  background-color: ${({ theme, isPlaceholder }) =>
+    isPlaceholder ? 'none' : theme.color.primary[500]};
+
+  &:not(:last-child) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  flex: 5;
+  &:last-child {
+    flex: 1;
+  }
 `;
