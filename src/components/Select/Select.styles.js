@@ -55,9 +55,16 @@ export const SelectElement = styled.div`
   text-overflow: ellipsis;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: ${({ theme }) => `0 ${theme.spacing[3]}`};
   font-size: ${({ theme }) => theme.typography.size.small[1]};
   gap: ${({ theme }) => theme.spacing[1]};
+
+  & svg {
+    transition: 0.2s ease-in-out;
+    transform: ${({ isOpen }) => (isOpen ? 'rotate(-180deg)' : 'rotate(0deg)')};
+    fill: ${({ theme }) => theme.color.primary[500]};
+  }
 `;
 
 export const SelectDropdown = styled.div`

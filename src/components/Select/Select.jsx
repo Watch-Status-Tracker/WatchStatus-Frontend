@@ -1,3 +1,4 @@
+import Icon from '@components/Icon/Icon';
 import {
   Label,
   OuterWrapper,
@@ -73,7 +74,7 @@ const Select = ({
       <Wrapper width={width}>
         {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
         <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>
-          <SelectElement>
+          <SelectElement isOpen={isOpen}>
             {isMulti ? (
               <>
                 {renderMultiValue(dropdownValue[0] || placeholder, !dropdownValue.length)}
@@ -85,6 +86,7 @@ const Select = ({
                 {dropdownValue || placeholder}
               </SelectedValue>
             )}
+            <Icon.ChevronDown />
           </SelectElement>
         </SelectWrapper>
         <SelectDropdown size={size} width={dropdownWidth} isOpen={isOpen}>
