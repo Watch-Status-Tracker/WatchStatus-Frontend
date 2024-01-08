@@ -117,7 +117,7 @@ export const SelectDropdownPlaceholder = styled.div`
 
 export const SelectedValue = styled.p`
   color: ${({ theme, isPlaceholder }) =>
-    isPlaceholder ? theme.color.dark[500] : theme.color.primary[500]};
+    isPlaceholder ? theme.color.primary[300] : theme.color.primary[500]};
   font-weight: ${({ theme, isPlaceholder }) =>
     isPlaceholder ? theme.typography.weight.regular : theme.typography.weight.medium};
   white-space: nowrap;
