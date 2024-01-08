@@ -1,20 +1,39 @@
 import { InputContent, StyledInput, StyledLabel, Wrapper } from '@components/Input/Input.styles';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+
 const Input = ({
   size = 'large',
-  label,
+  label = 'Label placeholder',
   isLabelVisible = true,
-  placeholder = 'Placeholder',
+  placeholder = 'Text placeholder',
   icon,
-  width = '230px',
+  width,
   value,
+  onChange,
 }) => {
+  const [inputValue, setInputValue] = useState(value || '');
+
+  const handleChange = (e) => {
+    onChange &&
+      onChange({
+        ...e,
+        target: {
+          value: [
+            /*valueFromEvent*/
+          ],
+        },
+      });
+    // rest of the code
+    setInputValue();
+  };
+
   return (
     <Wrapper width={width} size={size}>
       {isLabelVisible && <StyledLabel>{label}</StyledLabel>}
       <InputContent size={size}>
         {icon}
-        <StyledInput value={value} placeholder={placeholder} />
+        <StyledInput value={inputValue} onChange={handleChange} placeholder={placeholder} />
       </InputContent>
     </Wrapper>
   );

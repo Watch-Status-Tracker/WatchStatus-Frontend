@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${({ width }) => width};
-  gap: ${({ size }) => (size === 'large' ? '12px' : '8px')};
+  width: ${({ width }) => width || '100%'};
+  gap: ${({ theme, size }) => (size === 'large' ? theme.spacing[2] : theme.spacing[1])};
 `;
+
 export const StyledLabel = styled.label`
   font-size: ${({ theme }) => theme.typography.size.small[2]};
   color: ${({ theme }) => theme.color.primary[900]};
@@ -48,7 +49,11 @@ export const StyledInput = styled.input`
   border: none;
   color: ${({ theme }) => theme.color.primary[900]};
 
+  &:not(:placeholder-shown) {
+    font-weight: ${({ theme }) => theme.typography.weight.medium};
+  }
+
   &::placeholder {
-    color: ${({ theme }) => theme.color.primary[100]};
+    color: ${({ theme }) => theme.color.primary[300]};
   }
 `;
