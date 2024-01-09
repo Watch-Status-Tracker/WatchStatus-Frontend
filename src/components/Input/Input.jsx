@@ -19,13 +19,10 @@ const Input = ({
       onChange({
         ...e,
         target: {
-          value: [
-            /*valueFromEvent*/
-          ],
+          value: [e.target.value],
         },
       });
-    // rest of the code
-    setInputValue();
+    setInputValue(e.target.value);
   };
 
   return (

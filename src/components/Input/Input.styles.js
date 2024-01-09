@@ -55,5 +55,6 @@ export const StyledInput = styled.input`
 
   &::placeholder {
     color: ${({ theme }) => theme.color.primary[300]};
+    opacity: 1;
   }
 `;
