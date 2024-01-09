@@ -11,6 +11,8 @@ const Input = ({
   width,
   value,
   onChange,
+  name,
+  type = 'text',
 }) => {
   const [inputValue, setInputValue] = useState(value || '');
 
@@ -30,7 +32,13 @@ const Input = ({
       {isLabelVisible && <StyledLabel>{label}</StyledLabel>}
       <InputContent size={size}>
         {icon}
-        <StyledInput value={inputValue} onChange={handleChange} placeholder={placeholder} />
+        <StyledInput
+          type={type}
+          name={name}
+          value={inputValue}
+          onChange={handleChange}
+          placeholder={placeholder}
+        />
       </InputContent>
     </Wrapper>
   );
