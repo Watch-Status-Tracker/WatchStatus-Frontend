@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     mobile: '100%',
   })}
 
-    ${breakpoints('height', {
+  ${breakpoints('height', {
     desktop: '100%',
     tablet: '70px',
     mobile: '70px',
