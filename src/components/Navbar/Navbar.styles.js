@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.color.primary[500]};
 
-
   ${breakpoints('align-items', {
     desktop: 'flex-end',
   })}
@@ -24,7 +23,7 @@ export const Wrapper = styled.div`
     mobile: '100%',
   })}
 
-    ${breakpoints('height', {
+  ${breakpoints('height', {
     desktop: '100%',
     tablet: '70px',
     mobile: '70px',
