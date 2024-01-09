@@ -12,6 +12,7 @@ import {
   Wrapper,
 } from '@components/Select/Select.styles';
 import { useSelect } from '@components/Select/hooks/useSelect';
+import { useOutsideClick } from '@hooks/useOutsideClick';
 import PropTypes from 'prop-types';
 import { useMemo, useRef } from 'react';
 
@@ -24,16 +25,12 @@ const Select = ({
   width,
   onChange,
   value,
-  options,
+  options = [],
 }) => {
   const outerWrapperRef = useRef(null);
-
-  const { dropdownWidth, isOpen, dropdownValue, handleOptionClick, handleOpenDropdown } = useSelect(
-    outerWrapperRef,
-    isMulti,
-    onChange,
-    value
-  );
+  const { dropdownWidth, isOpen, dropdownValue, handleOptionClick, handleOpenDropdown, setIsOpen } =
+    useSelect(outerWrapperRef, isMulti, onChange, value);
+  useOutsideClick(outerWrapperRef, () => setIsOpen(false));
 
   const renderOption = (option) => {
     const isOptionSelected = (option) =>
