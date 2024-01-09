@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { PropTypes } from 'prop-types';
-import { Children, cloneElement, memo } from 'react';
+import { Children, cloneElement, isValidElement, memo } from 'react';
 
 const Form = memo(({ children, initialValues, validationSchema, setErrors, onFormSubmit }) => {
   const { handleChange, values, handleSubmit, validateForm } = useFormik({
@@ -23,17 +23,30 @@ const Form = memo(({ children, initialValues, validationSchema, setErrors, onFor
     }
   };
 
-  // Function  for later that checks if children are of type certain component (Icon.Bookmark in this case)
-  // const checkType = Children.map(children, (child) => (child.type === Icon.Bookmark ? 'yes' : 'no'))
+  const mapChildrenWithProps = (children) => {
+    return Children.map(children, (child) => {
+      if (!isValidElement(child)) {
+        return child;
+      }
 
-  const mappedChildren = Children.map(children, (child) => {
-    const { name } = child.props;
-    return cloneElement(child, {
-      onChange: handleChange,
-      value: values[name],
+      let childProps = {};
+      if (child.props.children) {
+        childProps.children = mapChildrenWithProps(child.props.children);
+      }
+
+      if (child.props.name) {
+        childProps = {
+          ...childProps,
+          onChange: handleChange,
+          value: values[child.props.name],
+        };
+      }
+
+      return cloneElement(child, childProps);
     });
-  });
+  };
 
+  const mappedChildren = mapChildrenWithProps(children);
   return <form onSubmit={handleFormSubmit}>{mappedChildren}</form>;
 });
 
