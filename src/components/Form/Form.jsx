@@ -34,10 +34,14 @@ const Form = memo(({ children, initialValues, validationSchema, setErrors, onFor
         childProps.children = mapChildrenWithProps(child.props.children);
       }
 
+      childProps = {
+        ...childProps,
+        onChange: handleChange,
+      };
+
       if (child.props.name) {
         childProps = {
           ...childProps,
-          onChange: handleChange,
           value: values[child.props.name],
         };
       }
