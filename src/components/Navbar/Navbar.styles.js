@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.color.primary[500]};
 
-
   ${breakpoints('align-items', {
     desktop: 'flex-end',
   })}
