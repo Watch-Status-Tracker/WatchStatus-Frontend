@@ -1,6 +1,6 @@
 import AccountBox from '@components/AccountBox/AccountBox';
 import Navbar from '@components/Navbar/Navbar';
-import { useMediaQuery } from '@hooks/useMediaQuery/useMediaQuery';
+import { useMediaQuery } from '@hooks/useMediaQuery';
 import {
   BentoContent,
   BentoWrapper,
