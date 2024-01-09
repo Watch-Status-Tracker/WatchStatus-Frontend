@@ -139,7 +139,7 @@ export const SelectedMultiValue = styled.div`
   border-radius: 5px;
   font-size: ${({ theme }) => theme.typography.size.small[1]};
   color: ${({ theme, isPlaceholder }) =>
-    isPlaceholder ? theme.color.dark[500] : theme.color.base.white};
+    isPlaceholder ? theme.color.primary[300] : theme.color.base.white};
   background-color: ${({ theme, isPlaceholder }) =>
     isPlaceholder ? 'none' : theme.color.primary[500]};
 
