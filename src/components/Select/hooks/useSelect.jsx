@@ -1,6 +1,6 @@
 import { useCallback, useLayoutEffect, useState } from 'react';
 
-export const useSelect = (ref, isMulti, onChange, value) => {
+export const useSelect = (ref, isMulti, onChange, value, name) => {
   const [dropdownWidth, setDropdownWidth] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownValue, setDropdownValue] = useState(
@@ -34,18 +34,18 @@ export const useSelect = (ref, isMulti, onChange, value) => {
       if (isMulti) {
         if (dropdownValue.includes(currentTargetValue)) {
           const newValue = dropdownValue.filter((value) => value !== currentTargetValue);
-          onChange && onChange({ ...e, target: { value: newValue } });
+          onChange && onChange({ ...e, target: { ...e.target, value: newValue, name } });
           return setDropdownValue(newValue);
         }
         const newValue = [...dropdownValue, currentTargetValue];
-        onChange && onChange({ ...e, target: { value: newValue } });
+        onChange && onChange({ ...e, target: { ...e.target, value: newValue, name } });
         return setDropdownValue(newValue);
       }
-      onChange && onChange({ ...e, target: { value: currentTargetValue } });
+      onChange && onChange({ ...e, target: { ...e.target, value: currentTargetValue, name } });
       setDropdownValue(currentTargetValue);
       setIsOpen(false);
     },
-    [isMulti, dropdownValue, onChange]
+    [isMulti, dropdownValue, onChange, name]
   );
 
   const handleOpenDropdown = () => {
