@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { PropTypes } from 'prop-types';
 import { Children, cloneElement, memo } from 'react';
 
 const Form = memo(({ children, initialValues, validationSchema, setErrors, onFormSubmit }) => {
@@ -35,5 +36,12 @@ const Form = memo(({ children, initialValues, validationSchema, setErrors, onFor
 
   return <form onSubmit={handleFormSubmit}>{mappedChildren}</form>;
 });
+
+Form.propTypes = {
+  children: PropTypes.node.isRequired,
+  initialValues: PropTypes.object.isRequired,
+  validationSchema: PropTypes.object.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
 
 export default Form;
