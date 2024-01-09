@@ -35,13 +35,11 @@ export const useSelect = (ref, isMulti, onChange, value) => {
         if (dropdownValue.includes(currentTargetValue)) {
           const newValue = dropdownValue.filter((value) => value !== currentTargetValue);
           onChange && onChange({ ...e, target: { value: newValue } });
-          setDropdownValue(newValue);
-          return;
+          return setDropdownValue(newValue);
         }
         const newValue = [...dropdownValue, currentTargetValue];
         onChange && onChange({ ...e, target: { value: newValue } });
-        setDropdownValue(newValue);
-        return;
+        return setDropdownValue(newValue);
       }
       onChange && onChange({ ...e, target: { value: currentTargetValue } });
       setDropdownValue(currentTargetValue);
