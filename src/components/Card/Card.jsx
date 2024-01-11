@@ -8,13 +8,20 @@ import {
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const Card = ({ size = 'large', title = 'Placeholder', isTitleVisible = true, imageUrl }) => {
+const Card = ({
+  size = 'large',
+  title = 'Placeholder',
+  isTitleVisible = true,
+  imageUrl,
+  onClick,
+}) => {
   const [imageError, setImageError] = useState(false);
   const handleImageError = () => {
     setImageError(true);
   };
+
   return (
-    <Wrapper size={size}>
+    <Wrapper size={size} onClick={onClick}>
       <CardContainer size={size}>
         {imageUrl && !imageError ? (
           <CardImage src={imageUrl} onError={handleImageError} />
@@ -32,5 +39,6 @@ Card.propTypes = {
   title: PropTypes.string,
   isTitleVisible: PropTypes.bool,
   imageUrl: PropTypes.string,
+  onClick: PropTypes.func,
 };
 export default Card;
