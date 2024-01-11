@@ -10,7 +10,7 @@ import {
 import Icon from '@components/Icon/Icon';
 import { useRef } from 'react';
 
-const EnhancedBentoBox = ({ title, children }) => {
+const EnhancedBentoBox = ({ title, children, size }) => {
   const carouselRef = useRef(null);
   const scrollOffset = 400;
 
@@ -25,10 +25,10 @@ const EnhancedBentoBox = ({ title, children }) => {
   };
 
   return (
-    <BentoBox>
-      <OuterBentoWrapper>
+    <BentoBox size={size}>
+      <OuterBentoWrapper size={size}>
         <TopWrapper>
-          <BentoHeader>{title}</BentoHeader>
+          <BentoHeader size={size}>{title}</BentoHeader>
           <CarouselNavigation>
             <CarouselButton direction={'left'} onClick={() => handleMoveCarousel('left')}>
               <Icon.ChevronDown />

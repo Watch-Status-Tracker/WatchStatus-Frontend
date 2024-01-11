@@ -4,7 +4,7 @@ export const OuterBentoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: ${({ theme }) => theme.spacing[10]};
+  gap: ${({ theme, size }) => (size === 'large' ? theme.spacing[10] : theme.spacing[5])};
 `;
 
 export const TopWrapper = styled.div`
@@ -15,7 +15,8 @@ export const TopWrapper = styled.div`
 
 export const BentoHeader = styled.div`
   display: flex;
-  font-size: ${({ theme }) => theme.typography.size.heading[2]};
+  font-size: ${({ theme, size }) =>
+    size === 'large' ? theme.typography.size.heading[2] : theme.typography.size.heading[5]};
   font-weight: ${({ theme }) => theme.typography.weight.bold};
   color: ${({ theme }) => theme.color.primary[500]};
 `;
@@ -24,7 +25,7 @@ export const CardCarousel = styled.div`
   display: flex;
   width: 100%;
   overflow-x: scroll;
-  gap: ${({ theme }) => theme.spacing[10]};
+  gap: ${({ theme, size }) => (size === 'large' ? theme.spacing[10] : theme.spacing[5])};
   scroll-behavior: smooth;
   scrollbar-width: none;
   &::-webkit-scrollbar {
