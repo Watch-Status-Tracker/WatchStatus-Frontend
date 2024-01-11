@@ -8,5 +8,4 @@ export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.color.base.white};
   border-radius: 30px;
   padding: ${({ size }) => (size === 'large' ? '40px' : '30px')};
-  overflow: hidden;
 `;
