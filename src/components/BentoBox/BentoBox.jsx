@@ -1,8 +1,8 @@
 import { Wrapper } from '@components/BentoBox/BentoBox.styles';
 import PropTypes from 'prop-types';
 
-const BentoBox = ({ size = 'large' }) => {
-  return <Wrapper size={size}></Wrapper>;
+const BentoBox = ({ size = 'large', children }) => {
+  return <Wrapper size={size}>{children}</Wrapper>;
 };
 
 export default BentoBox;
