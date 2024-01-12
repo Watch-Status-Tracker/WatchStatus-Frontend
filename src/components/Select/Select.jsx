@@ -26,15 +26,21 @@ const Select = ({
   onChange,
   value,
   options = [],
+  name,
 }) => {
   const outerWrapperRef = useRef(null);
   const { dropdownWidth, isOpen, dropdownValue, handleOptionClick, handleOpenDropdown, setIsOpen } =
-    useSelect(outerWrapperRef, isMulti, onChange, value);
+    useSelect(outerWrapperRef, isMulti, onChange, value, name);
   useOutsideClick(outerWrapperRef, () => setIsOpen(false));
 
   const renderOption = (option) => {
-    const isOptionSelected = (option) =>
-      isMulti ? dropdownValue.includes(option) : dropdownValue === option;
+    const isOptionSelected = (option) => {
+      if (!Array.isArray(dropdownValue)) {
+        return dropdownValue === option;
+      }
+
+      return dropdownValue.some((value) => value === option);
+    };
 
     return (
       <SelectDropdownOption
