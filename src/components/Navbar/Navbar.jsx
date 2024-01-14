@@ -2,6 +2,7 @@ import AccountBox from '@components/AccountBox/AccountBox';
 import Icon from '@components/Icon/Icon';
 import { ListContainer, NavContainer, Wrapper } from '@components/Navbar/Navbar.styles';
 import NavbarItem from '@components/Navbar/NavbarItem/NavbarItem';
+import { useAuth } from '@hooks/useAuth';
 import {
   browsePath,
   homePath,
@@ -13,9 +14,10 @@ import {
 import PropTypes from 'prop-types';
 
 const Navbar = ({ variant = 'full' }) => {
-  const handleLogOut = (e) => {
-    e.preventDefault();
-    alert('Log out');
+  const { removeToken } = useAuth();
+
+  const handleLogOut = () => {
+    removeToken();
   };
 
   return (
