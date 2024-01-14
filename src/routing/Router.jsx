@@ -1,4 +1,4 @@
-import { AuthRoute } from '@pages/Auth/Auth.routes';
+import { AuthRoute, RegisterRoute } from '@pages/Auth/Auth.routes';
 import { BrowseRoute } from '@pages/Browse/Browse.routes';
 import { HomeRoute } from '@pages/Home/Home.routes';
 import { MyListsRoute } from '@pages/MyLists/MyLists.routes';
@@ -24,7 +24,13 @@ const WildcardRoute = {
   element: <Navigate to="/home" />,
 };
 
-export const router = createBrowserRouter([AuthRoute, PlaygroundRoute, RootRoute, WildcardRoute]);
+export const router = createBrowserRouter([
+  AuthRoute,
+  RegisterRoute,
+  PlaygroundRoute,
+  RootRoute,
+  WildcardRoute,
+]);
 
 /*
   If you want to add new route,
