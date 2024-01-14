@@ -1,3 +1,5 @@
+export const authPath = '/login';
+
 export const homePath = '/home';
 export const listsPath = '/mylists';
 export const browsePath = '/browse';
