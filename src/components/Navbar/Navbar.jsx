@@ -12,12 +12,14 @@ import {
   surprisePath,
 } from '@routing/Paths';
 import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
 
 const Navbar = ({ variant = 'full' }) => {
   const { removeToken } = useAuth();
 
   const handleLogOut = () => {
     removeToken();
+    toast.success('Succesfuly logged out!');
   };
 
   return (

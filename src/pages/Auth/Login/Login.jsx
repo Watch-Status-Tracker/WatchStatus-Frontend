@@ -5,6 +5,7 @@ import { useAuth } from '@hooks/useAuth';
 import { FormContent, FormSubmitButton, SignUp } from '@pages/Auth/Login/Login.styles';
 import { registerPath } from '@routing/Paths';
 import AuthTemplate from '@templates/AuthTemplate/AuthTemplate';
+import toast from 'react-hot-toast';
 import { useMutation } from 'react-query';
 import * as yup from 'yup';
 
@@ -22,8 +23,7 @@ const Login = () => {
   const { setToken } = useAuth();
   const { mutate } = useMutation((data) => login(data), {
     onError: (error) => {
-      console.console.error();
-      'Error:', error;
+      toast.error('Invalid username or password!', error);
     },
     onSuccess: async (data) => {
       const user = data.data;
@@ -33,12 +33,11 @@ const Login = () => {
   });
 
   const handleSubmit = (values) => {
-    console.log(values);
     mutate(values);
   };
 
-  const handleLoginSuccess = (user) => {
-    console.log(user);
+  const handleLoginSuccess = () => {
+    toast.success('Succesfuly logged in!');
   };
 
   return (
