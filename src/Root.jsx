@@ -3,6 +3,7 @@ import { router } from '@routing/Router';
 import GlobalStyle from '@styles/globalStyles';
 import { GlobalThemeProvider } from '@theme/GlobalThemeProvider';
 import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterProvider } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ const Root = () => {
       <GlobalThemeProvider>
         <GlobalStyle />
         <RouterProvider router={router} />
+        <Toaster />
       </GlobalThemeProvider>
     </QueryClientProvider>
   );
