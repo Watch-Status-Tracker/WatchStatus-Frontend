@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { PropTypes } from 'prop-types';
 import { Children, cloneElement, isValidElement, memo } from 'react';
 
-export let submitFormm;
+export let submitFormHandler;
 
 const Form = memo(({ children, initialValues, validationSchema, setErrors, onFormSubmit }) => {
   const { handleChange, values, handleSubmit, validateForm, submitForm } = useFormik({
@@ -14,7 +14,7 @@ const Form = memo(({ children, initialValues, validationSchema, setErrors, onFor
     },
   });
 
-  submitFormm = submitForm;
+  submitFormHandler = submitForm;
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
