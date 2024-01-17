@@ -9,3 +9,5 @@ export const getShows = (page = 1) => movieClient.get(`discover/tv?page=${page}`
 export const getShow = (id = 1) => movieClient.get(`tv/${id}`);
 export const getTrendingTodayShows = () => movieClient.get('trending/tv/day');
 export const getTopRatedShows = (page = 1) => movieClient.get(`tv/top_rated?page=${page}`);
+
+export const discoverMovies = (params) => movieClient.get('discover/movie', { params });
