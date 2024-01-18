@@ -59,6 +59,7 @@ const Position = () => {
       <EnhancedBentoBox title={'Cast'}>
         {movieCast?.cast.map(({ name, profile_path }, index) => (
           <Card
+            noOverlay={true}
             key={`${name}-${index}`}
             title={name}
             imageUrl={`${import.meta.env.VITE_movieApiImageEndpoint}/${profile_path}`}

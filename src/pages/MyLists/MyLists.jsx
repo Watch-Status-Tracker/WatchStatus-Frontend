@@ -49,17 +49,19 @@ const MyLists = () => {
     setNewListName('');
   };
 
+  console.log(userListsData);
   const generatedLists = useMemo(() => {
-    console.log(userListsData);
     return userListsData.map((list, index) => (
       <EnhancedBentoBox key={`${list.name}-${index}`} title={list.name}>
         {list.positions.map((position, id) => (
           <Card
-            onClick={() => navigate(`/position/${position.id}`)}
+            noOverlay={true}
+            positionId={position.id}
+            onClick={() => navigate(`/position/${position.positionId}`)}
             size={deviceSize}
             key={`${position.title}-${id}`}
             title={position.title}
-            // imageUrl={position.image}
+            imageUrl={position.image}
           />
         ))}
       </EnhancedBentoBox>

@@ -14,6 +14,56 @@ export const CardContainer = styled.div`
   border-color: ${({ theme }) => theme.color.primary[900]};
   border-radius: ${({ size }) => (size === 'large' ? '20px' : '10px')};
   overflow: hidden;
+  position: relative;
+`;
+
+export const CardOptionsOverlay = styled.div`
+  display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing[4]};
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${({ theme }) => theme.color.dark[900]};
+  padding: ${({ theme }) => theme.spacing[2]};
+
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: none;
+    display: none;
+  }
+`;
+
+export const CardOverlayHeader = styled.div`
+  color: ${({ theme }) => theme.color.base.white};
+  font-size: ${({ theme }) => theme.typography.size.small[4]};
+  font-weight: ${({ theme }) => theme.typography.weight.medium};
+`;
+
+export const CardOption = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing[1]};
+  width: 100%;
+  background-color: ${({ theme }) => theme.color.primary[900]};
+  padding: ${({ theme }) => theme.spacing[1]};
+  color: ${({ theme }) => theme.color.base.white};
+  font-size: ${({ theme }) => theme.typography.size.small[2]};
+  font-weight: ${({ theme }) => theme.typography.weight.medium};
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary[700]};
+  }
 `;
 
 export const CardImage = styled.img`

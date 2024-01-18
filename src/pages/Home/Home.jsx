@@ -20,6 +20,7 @@ const Home = () => {
   useQuery(['getlists'], () => getLists(), {
     onSuccess: ({ data }) => {
       console.log(data);
+      console.log(data);
       setCurrentlyWatching([...data[0].positions]);
     },
     onError: (error) => {
@@ -55,17 +56,20 @@ const Home = () => {
       <EnhancedBentoBox size={deviceSize} title={'👀 Currently watching 👀'}>
         {currentlyWatching.map(({ title, image, id }, index) => (
           <Card
+            noOverlay={true}
+            positionId={id}
             onClick={() => navigate(`/position/${id}`)}
             size={deviceSize}
             key={`${title}-${index}`}
             title={title}
-            imageUrl={`${import.meta.env.VITE_movieApiImageEndpoint}/${image}`}
+            imageUrl={image}
           />
         ))}
       </EnhancedBentoBox>
       <EnhancedBentoBox size={deviceSize} title={'🔥 Trending today 🔥'}>
         {trendingMovies.map(({ id, popularity, original_title, poster_path, name }) => (
           <Card
+            positionId={id}
             onClick={() => navigate(`/position/${id}`)}
             size={deviceSize}
             key={`${id}-${popularity}`}
