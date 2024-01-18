@@ -14,9 +14,11 @@ import {
 import { useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useMutation, useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 const MyLists = () => {
   const device = useMediaQuery();
+  const navigate = useNavigate();
   const deviceSize = device === 'desktop' ? 'large' : 'small';
   const [userListsData, setUserListsData] = useState([]);
   const [newListName, setNewListName] = useState('');
@@ -53,6 +55,7 @@ const MyLists = () => {
       <EnhancedBentoBox key={`${list.name}-${index}`} title={list.name}>
         {list.positions.map((position, id) => (
           <Card
+            onClick={() => navigate(`/position/${position.id}`)}
             size={deviceSize}
             key={`${position.title}-${id}`}
             title={position.title}
