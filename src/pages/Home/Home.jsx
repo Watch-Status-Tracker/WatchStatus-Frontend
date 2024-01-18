@@ -1,16 +1,30 @@
 import Card from '@components/Card/Card';
 import EnhancedBentoBox from '@components/EnhancedBentoBox/EnhancedBentoBox';
+import { getLists } from '@config/api/backendAPI';
 import { getTopRatedMovies, getTrendingTodayMovies } from '@config/api/moviesAPI';
 import { useMediaQuery } from '@hooks/useMediaQuery';
 import { Wrapper } from '@pages/Home/Home.styles';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
+  const [currentlyWatching, setCurrentlyWatching] = useState([]);
   const device = useMediaQuery();
   const deviceSize = device === 'desktop' ? 'large' : 'small';
+
+  useQuery(['getlists'], () => getLists(), {
+    onSuccess: ({ data }) => {
+      console.log(data);
+      setCurrentlyWatching([...data[0].positions]);
+    },
+    onError: (error) => {
+      toast.error('Something went wrong', error);
+    },
+    refetchOnWindowFocus: false,
+  });
 
   /*  Trending Movies Query  */
   useQuery(['trendingMovies'], () => getTrendingTodayMovies(), {
@@ -18,7 +32,7 @@ const Home = () => {
       setTrendingMovies((prev) => (prev.length ? [...prev, ...data.results] : [...data.results]));
     },
     onError: (error) => {
-      console.log(error.message);
+      toast.error('Error', error.message);
     },
     refetchOnWindowFocus: false,
   });
@@ -29,7 +43,7 @@ const Home = () => {
       setTopMovies((prev) => (prev.length ? [...prev, ...data.results] : [...data.results]));
     },
     onError: (error) => {
-      console.log(error.message);
+      toast.error('Error', error.message);
     },
     refetchOnWindowFocus: false,
   });
@@ -37,7 +51,14 @@ const Home = () => {
   return (
     <Wrapper>
       <EnhancedBentoBox size={deviceSize} title={'👀 Currently watching 👀'}>
-        Waiting for BE
+        {currentlyWatching.map(({ title, image }, index) => (
+          <Card
+            size={deviceSize}
+            key={`${title}-${index}`}
+            title={title}
+            imageUrl={`${import.meta.env.VITE_movieApiImageEndpoint}/${image}`}
+          />
+        ))}
       </EnhancedBentoBox>
       <EnhancedBentoBox size={deviceSize} title={'🔥 Trending today 🔥'}>
         {trendingMovies.map(({ id, popularity, original_title, poster_path, name }) => (
