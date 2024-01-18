@@ -21,10 +21,10 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/movieAPI/, ''),
       },
-      '/backend': {
-        target: 'https://here.will.be.address.of.backend',
+      '/backendAPI': {
+        target: process.env.VITE_backendEndpoint,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/other/, ''),
+        rewrite: (path) => path.replace(/^\/backendAPI/, ''),
       },
     },
   },
