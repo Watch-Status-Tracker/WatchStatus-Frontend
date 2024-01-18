@@ -17,13 +17,7 @@ const Input = ({
   const [inputValue, setInputValue] = useState(value || '');
 
   const handleChange = (e) => {
-    onChange &&
-      onChange({
-        ...e,
-        target: {
-          value: [e.target.value],
-        },
-      });
+    onChange && onChange(e);
     setInputValue(e.target.value);
   };
 
