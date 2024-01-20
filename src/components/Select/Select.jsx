@@ -7,7 +7,6 @@ import {
   SelectDropdownPlaceholder,
   SelectElement,
   SelectWrapper,
-  SelectedMultiValue,
   SelectedValue,
   Wrapper,
 } from '@components/Select/Select.styles';
@@ -19,39 +18,36 @@ import { useMemo, useRef } from 'react';
 const Select = ({
   size = 'large',
   label = 'Label placeholder',
-  isMulti = false,
   isLabelVisible = true,
   placeholder = 'Select an option',
   width,
   onChange,
-  value,
   options = [],
   name,
+  onFormChange,
 }) => {
   const outerWrapperRef = useRef(null);
   const { dropdownWidth, isOpen, dropdownValue, handleOptionClick, handleOpenDropdown, setIsOpen } =
-    useSelect(outerWrapperRef, isMulti, onChange, value, name);
+    useSelect(outerWrapperRef, onChange, name, onFormChange);
   useOutsideClick(outerWrapperRef, () => setIsOpen(false));
 
   const renderOption = (option) => {
     const isOptionSelected = (option) => {
-      if (!Array.isArray(dropdownValue)) {
-        return dropdownValue === option;
-      }
+      if (!dropdownValue?.value) return false;
 
-      return dropdownValue.some((value) => value === option);
+      return +dropdownValue.value === +option.value;
     };
 
     return (
       <SelectDropdownOption
-        key={option}
-        isMulti={isMulti}
+        key={`${option.value}-${option.name}`}
         isSelected={isOptionSelected(option)}
-        value={option}
+        value={option.value}
         size={size}
         onClick={handleOptionClick}
+        name={option.name}
       >
-        <SelectedValue>{option}</SelectedValue>
+        <SelectedValue>{option.name}</SelectedValue>
       </SelectDropdownOption>
     );
   };
@@ -63,14 +59,7 @@ const Select = ({
       <SelectDropdownPlaceholder>No data</SelectDropdownPlaceholder>
     );
 
-  const renderMultiValue = (value, isPlaceholder) => (
-    <SelectedMultiValue key={value} size={size} isMulti={isMulti} isPlaceholder={isPlaceholder}>
-      {value}
-    </SelectedMultiValue>
-  );
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const generatedOptions = useMemo(() => generateOptions(), [options]);
+  const generatedOptions = useMemo(() => generateOptions(), [dropdownValue]);
 
   return (
     <OuterWrapper width={width} ref={outerWrapperRef}>
@@ -78,17 +67,9 @@ const Select = ({
         {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
         <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>
           <SelectElement isOpen={isOpen}>
-            {isMulti ? (
-              <>
-                {renderMultiValue(dropdownValue[0] || placeholder, !dropdownValue.length)}
-                {dropdownValue.length > 1 &&
-                  renderMultiValue(`+${dropdownValue.length - 1}`, !dropdownValue)}
-              </>
-            ) : (
-              <SelectedValue isPlaceholder={!dropdownValue}>
-                {dropdownValue || placeholder}
-              </SelectedValue>
-            )}
+            <SelectedValue isPlaceholder={!dropdownValue}>
+              {dropdownValue?.name || placeholder}
+            </SelectedValue>
             <Icon.ChevronDown />
           </SelectElement>
         </SelectWrapper>
@@ -105,15 +86,10 @@ export default Select;
 Select.propTypes = {
   size: PropTypes.oneOf(['small', 'large']),
   label: PropTypes.string,
-  isMulti: PropTypes.bool,
   isLabelVisible: PropTypes.bool,
   placeholder: PropTypes.string,
   width: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object])),
-  ]),
+  value: PropTypes.object,
   options: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
 };

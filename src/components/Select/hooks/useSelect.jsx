@@ -1,11 +1,9 @@
 import { useCallback, useLayoutEffect, useState } from 'react';
 
-export const useSelect = (ref, isMulti, onChange, value, name) => {
+export const useSelect = (ref, onChange, name, onFormChange) => {
   const [dropdownWidth, setDropdownWidth] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownValue, setDropdownValue] = useState(
-    isMulti ? (value ? [...value] : []) : value || null
-  );
+  const [dropdownValue, setDropdownValue] = useState({});
 
   useLayoutEffect(() => {
     const currentRef = ref.current;
@@ -30,22 +28,16 @@ export const useSelect = (ref, isMulti, onChange, value, name) => {
 
   const handleOptionClick = useCallback(
     (e) => {
-      const currentTargetValue = e.currentTarget.getAttribute('value');
-      if (isMulti) {
-        if (dropdownValue.includes(currentTargetValue)) {
-          const newValue = dropdownValue.filter((value) => value !== currentTargetValue);
-          onChange && onChange({ ...e, target: { ...e.target, value: newValue, name } });
-          return setDropdownValue(newValue);
-        }
-        const newValue = [...dropdownValue, currentTargetValue];
-        onChange && onChange({ ...e, target: { ...e.target, value: newValue, name } });
-        return setDropdownValue(newValue);
-      }
+      const currentTargetValue = {
+        name: e.currentTarget.getAttribute('name'),
+        value: e.currentTarget.getAttribute('value'),
+      };
       onChange && onChange({ ...e, target: { ...e.target, value: currentTargetValue, name } });
+      onFormChange && onFormChange();
       setDropdownValue(currentTargetValue);
       setIsOpen(false);
     },
-    [isMulti, dropdownValue, onChange, name]
+    [dropdownValue, onChange, name]
   );
 
   const handleOpenDropdown = () => {
