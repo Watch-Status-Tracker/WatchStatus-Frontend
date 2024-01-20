@@ -54,7 +54,6 @@ const Browse = () => {
       'with_runtime.lte': values.runtime ?? null,
       'release_date.lte': values.year ? new Date(values.year, 0, 0) : null,
     };
-    console.log(newParams);
     setParams(newParams);
     refetch();
   }, 250);
@@ -71,12 +70,14 @@ const Browse = () => {
       >
         <FormWrapper size={deviceSize}>
           <Select
+            test={'browse_genres_input'}
             onFormChange={submitFormHandler}
             label={'Genres'}
             name={'genre'}
             options={genresOptions}
           />
           <Input
+            test={'browse_year_input'}
             formOnChange={submitFormHandler}
             name={'year'}
             type={'number'}
@@ -84,6 +85,7 @@ const Browse = () => {
             label={'Year'}
           />
           <Input
+            test={'browse_language_input'}
             formOnChange={submitFormHandler}
             name={'language'}
             type={'text'}
@@ -91,6 +93,7 @@ const Browse = () => {
             label={'Language'}
           />
           <Input
+            test={'browse_sort_by_input'}
             formOnChange={submitFormHandler}
             name={'sort_by'}
             type={'text'}
@@ -98,6 +101,7 @@ const Browse = () => {
             label={'Sort by'}
           />
           <Input
+            test={'browse_runtimes_input'}
             formOnChange={submitFormHandler}
             name={'runtime'}
             type={'text'}

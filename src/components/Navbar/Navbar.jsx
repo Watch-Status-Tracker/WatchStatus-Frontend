@@ -20,20 +20,46 @@ const Navbar = ({ variant = 'full' }) => {
       {variant === 'full' && <AccountBox />}
       <NavContainer>
         <ListContainer>
-          <NavbarItem text="Home" variant={variant} to={homePath} icon={<Icon.Home />} />
-          <NavbarItem text="My lists" variant={variant} to={listsPath} icon={<Icon.Bookmark />} />
-          <NavbarItem text="Browse" variant={variant} to={browsePath} icon={<Icon.Search />} />
-          <NavbarItem text="Ranking" variant={variant} to={rankingPath} icon={<Icon.Ranking />} />
+          <NavbarItem
+            test={'navbar_home_button'}
+            text="Home"
+            variant={variant}
+            to={homePath}
+            icon={<Icon.Home />}
+          />
+          <NavbarItem
+            test={'navbar_lists_button'}
+            text="My lists"
+            variant={variant}
+            to={listsPath}
+            icon={<Icon.Bookmark />}
+          />
+          <NavbarItem
+            test={'navbar_browse_button'}
+            text="Browse"
+            variant={variant}
+            to={browsePath}
+            icon={<Icon.Search />}
+          />
+          <NavbarItem
+            test={'navbar_ranking_button'}
+            text="Ranking"
+            variant={variant}
+            to={rankingPath}
+            icon={<Icon.Ranking />}
+          />
         </ListContainer>
         {variant === 'full' && (
           <ListContainer>
             <NavbarItem
+              test={'navbar_settings_button'}
               text="Settings"
               variant={variant}
               to={settingsPath}
               icon={<Icon.Settings />}
             />
             <NavbarItem
+              test={'navbar_logout_button'}
               text="Log out"
               variant={variant}
               onClick={handleLogOut}

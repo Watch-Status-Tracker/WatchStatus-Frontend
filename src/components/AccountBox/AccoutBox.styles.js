@@ -20,10 +20,13 @@ export const Wrapper = styled.div`
 
 export const ImgContainer = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 10px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.color.primary[900]};
   background: ${({ theme }) => theme.color.primary[200]};
   border: 2px solid ${({ theme }) => theme.color.primary[500]};
 `;

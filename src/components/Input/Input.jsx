@@ -14,6 +14,7 @@ const Input = ({
   name,
   type = 'text',
   formOnChange = false,
+  test,
 }) => {
   const [inputValue, setInputValue] = useState(value || '');
 
@@ -34,6 +35,7 @@ const Input = ({
           value={inputValue}
           onChange={handleChange}
           placeholder={placeholder}
+          data-test={test}
         />
       </InputContent>
     </Wrapper>

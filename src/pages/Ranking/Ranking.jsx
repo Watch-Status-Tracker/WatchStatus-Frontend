@@ -76,12 +76,14 @@ const Ranking = () => {
       >
         <FormWrapper size={deviceSize}>
           <Select
+            test={'ranking_genres_input'}
             onFormChange={submitFormHandler}
             label={'Genres'}
             name={'genre'}
             options={genresOptions}
           />
           <Input
+            test={'ranking_year_input'}
             formOnChange={submitFormHandler}
             name={'year'}
             type={'number'}
@@ -89,6 +91,7 @@ const Ranking = () => {
             label={'Year'}
           />
           <Input
+            test={'ranking_language_input'}
             formOnChange={submitFormHandler}
             name={'language'}
             type={'text'}
@@ -96,6 +99,7 @@ const Ranking = () => {
             label={'Language'}
           />
           <Input
+            test={'ranking_user_votes_input'}
             formOnChange={submitFormHandler}
             name={'sort_by'}
             type={'number'}
@@ -105,6 +109,7 @@ const Ranking = () => {
             max={500}
           />
           <Input
+            test={'ranking_runtimes_input'}
             formOnChange={submitFormHandler}
             name={'runtime'}
             type={'text'}

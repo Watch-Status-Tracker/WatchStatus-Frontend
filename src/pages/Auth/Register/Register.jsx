@@ -51,20 +51,32 @@ const Register = () => {
       >
         <FormContent>
           <Input
+            test={'register_username_input'}
             label="Username"
             placeholder={'Enter your username'}
             type="text"
             name={'username'}
           />
-          <Input label="Email" placeholder={'Enter your email'} type="email" name={'email'} />
           <Input
+            test={'register_email'}
+            label="Email"
+            placeholder={'Enter your email'}
+            type="email"
+            name={'email'}
+          />
+          <Input
+            test={'register_password'}
             label="Password"
             placeholder={'Enter your password'}
             type="password"
             name={'password'}
           />
-          <FormSubmitButton type="submit">Submit</FormSubmitButton>
-          <SignIn to={authPath}>Already have an account? Log in!</SignIn>
+          <FormSubmitButton data-test={'register_submit'} type="submit">
+            Create account
+          </FormSubmitButton>
+          <SignIn data-test={'register_redirect_login'} to={authPath}>
+            Already have an account? Log in!
+          </SignIn>
         </FormContent>
       </Form>
     </AuthTemplate>

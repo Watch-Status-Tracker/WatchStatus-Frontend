@@ -20,7 +20,7 @@ export const useAuth = () => {
     if (!token) return await logout();
 
     const decodedToken = JSON.parse(atob(token.split('.')[1]));
-    const isExpired = decodedToken.exp < Date.now() / 1000;
+    const isExpired = decodedToken.exp < decodedToken.iat;
 
     if (isExpired) return await logout();
   };

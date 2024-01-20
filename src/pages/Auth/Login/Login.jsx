@@ -21,23 +21,20 @@ const initialValues = {
 
 const Login = () => {
   const { setToken } = useAuth();
-  const { mutate } = useMutation((data) => login(data), {
+  const { mutate: loginMutate } = useMutation(['login'], (data) => login(data), {
     onError: (error) => {
       toast.error('Invalid username or password!', error);
     },
     onSuccess: async (data) => {
       const user = data.data;
-      handleLoginSuccess(user);
+      toast.success('Succesfuly logged in!');
+
       setToken(user);
     },
   });
 
   const handleSubmit = (values) => {
-    mutate(values);
-  };
-
-  const handleLoginSuccess = () => {
-    toast.success('Succesfuly logged in!');
+    loginMutate(values);
   };
 
   return (
@@ -49,19 +46,25 @@ const Login = () => {
       >
         <FormContent>
           <Input
+            test={'login_input'}
             label="Username"
             placeholder={'Enter your username'}
             type="text"
             name={'username'}
           />
           <Input
+            test={'login_password'}
             label="Password"
             placeholder={'Enter your password'}
             type="password"
             name={'password'}
           />
-          <FormSubmitButton type="submit">Submit</FormSubmitButton>
-          <SignUp to={registerPath}>or create your account</SignUp>
+          <FormSubmitButton type="submit" data-test={'login_submit'}>
+            Login
+          </FormSubmitButton>
+          <SignUp data-test={'login_redirect_register'} to={registerPath}>
+            or create your account
+          </SignUp>
         </FormContent>
       </Form>
     </AuthTemplate>

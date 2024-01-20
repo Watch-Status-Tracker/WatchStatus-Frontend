@@ -25,6 +25,7 @@ const Select = ({
   options = [],
   name,
   onFormChange,
+  test,
 }) => {
   const outerWrapperRef = useRef(null);
   const { dropdownWidth, isOpen, dropdownValue, handleOptionClick, handleOpenDropdown, setIsOpen } =
@@ -40,6 +41,7 @@ const Select = ({
 
     return (
       <SelectDropdownOption
+        data-test-value={option.name}
         key={`${option.value}-${option.name}`}
         isSelected={isOptionSelected(option)}
         value={option.value}
@@ -65,7 +67,7 @@ const Select = ({
     <OuterWrapper width={width} ref={outerWrapperRef}>
       <Wrapper width={width}>
         {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
-        <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown}>
+        <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown} data-test={test}>
           <SelectElement isOpen={isOpen}>
             <SelectedValue isPlaceholder={!dropdownValue}>
               {dropdownValue?.name || placeholder}
