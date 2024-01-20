@@ -4,7 +4,6 @@ export const registerPath = '/register';
 export const homePath = '/home';
 export const listsPath = '/mylists';
 export const browsePath = '/browse';
-export const surprisePath = '/surprise';
 export const rankingPath = '/ranking';
 export const settingsPath = '/settings';
 

@@ -3,14 +3,7 @@ import Icon from '@components/Icon/Icon';
 import { ListContainer, NavContainer, Wrapper } from '@components/Navbar/Navbar.styles';
 import NavbarItem from '@components/Navbar/NavbarItem/NavbarItem';
 import { useAuth } from '@hooks/useAuth';
-import {
-  browsePath,
-  homePath,
-  listsPath,
-  rankingPath,
-  settingsPath,
-  surprisePath,
-} from '@routing/Paths';
+import { browsePath, homePath, listsPath, rankingPath, settingsPath } from '@routing/Paths';
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
 
@@ -30,12 +23,6 @@ const Navbar = ({ variant = 'full' }) => {
           <NavbarItem text="Home" variant={variant} to={homePath} icon={<Icon.Home />} />
           <NavbarItem text="My lists" variant={variant} to={listsPath} icon={<Icon.Bookmark />} />
           <NavbarItem text="Browse" variant={variant} to={browsePath} icon={<Icon.Search />} />
-          <NavbarItem
-            text="Surprise me"
-            variant={variant}
-            to={surprisePath}
-            icon={<Icon.Shuffle />}
-          />
           <NavbarItem text="Ranking" variant={variant} to={rankingPath} icon={<Icon.Ranking />} />
         </ListContainer>
         {variant === 'full' && (
