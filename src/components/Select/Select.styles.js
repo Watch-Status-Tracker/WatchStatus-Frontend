@@ -131,27 +131,3 @@ export const SelectedValue = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-
-export const SelectedMultiValue = styled.div`
-  align-items: center;
-  justify-content: ${({ isPlaceholder }) => (isPlaceholder ? 'flex-start' : 'center')};
-  padding: ${({ theme }) => `${theme.spacing[1]} ${theme.spacing[2]}`};
-  border-radius: 5px;
-  font-size: ${({ theme }) => theme.typography.size.small[1]};
-  color: ${({ theme, isPlaceholder }) =>
-    isPlaceholder ? theme.color.primary[300] : theme.color.base.white};
-  background-color: ${({ theme, isPlaceholder }) =>
-    isPlaceholder ? 'none' : theme.color.primary[500]};
-
-  &:not(:last-child) {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    min-width: 0;
-  }
-
-  flex: 5;
-  &:last-child {
-    flex: 1;
-  }
-`;

@@ -13,12 +13,14 @@ const Input = ({
   onChange,
   name,
   type = 'text',
+  formOnChange = false,
 }) => {
   const [inputValue, setInputValue] = useState(value || '');
 
   const handleChange = (e) => {
     onChange && onChange(e);
     setInputValue(e.target.value);
+    formOnChange && formOnChange();
   };
 
   return (
@@ -48,4 +50,8 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   width: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  type: PropTypes.string,
+  formOnChange: PropTypes.func,
 };

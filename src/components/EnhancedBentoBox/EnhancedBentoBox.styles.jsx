@@ -16,7 +16,7 @@ export const TopWrapper = styled.div`
 export const BentoHeader = styled.div`
   display: flex;
   font-size: ${({ theme, size }) =>
-    size === 'large' ? theme.typography.size.heading[2] : theme.typography.size.heading[5]};
+    size === 'large' ? theme.typography.size.heading[3] : theme.typography.size.heading[5]};
   font-weight: ${({ theme }) => theme.typography.weight.bold};
   color: ${({ theme }) => theme.color.primary[500]};
 `;
