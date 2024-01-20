@@ -49,18 +49,22 @@ const Login = () => {
       >
         <FormContent>
           <Input
+            test={'login_input'}
             label="Username"
             placeholder={'Enter your username'}
             type="text"
             name={'username'}
           />
           <Input
+            test={'login_password'}
             label="Password"
             placeholder={'Enter your password'}
             type="password"
             name={'password'}
           />
-          <FormSubmitButton type="submit">Submit</FormSubmitButton>
+          <FormSubmitButton type="submit" data-test={'login_submit'}>
+            Submit
+          </FormSubmitButton>
           <SignUp to={registerPath}>or create your account</SignUp>
         </FormContent>
       </Form>
