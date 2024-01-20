@@ -41,6 +41,7 @@ const Select = ({
 
     return (
       <SelectDropdownOption
+        data-test-value={option.name}
         key={`${option.value}-${option.name}`}
         isSelected={isOptionSelected(option)}
         value={option.value}

@@ -99,7 +99,7 @@ const Ranking = () => {
             label={'Language'}
           />
           <Input
-            test={'ranking_sort_by_input'}
+            test={'ranking_user_votes_input'}
             formOnChange={submitFormHandler}
             name={'sort_by'}
             type={'number'}
@@ -109,7 +109,7 @@ const Ranking = () => {
             max={500}
           />
           <Input
-            test={'ranking_runtime_input'}
+            test={'ranking_runtimes_input'}
             formOnChange={submitFormHandler}
             name={'runtime'}
             type={'text'}

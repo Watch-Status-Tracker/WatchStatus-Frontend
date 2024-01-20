@@ -31,7 +31,7 @@ export const myListsCreateListButton = '[data-test="my_lists_create_list_button"
 export const myListsWrapper = '[data-test="my_lists_wrapper"]';
 
 /* Browse page */
-
+export const genreDataTest = (genre) => `[data-test-value="${genre}"]`;
 export const browseGenresInput = '[data-test="browse_genres_input"]';
 export const browseYearInput = '[data-test="browse_year_input"]';
 export const browseLanguageInput = '[data-test="browse_language_input"]';

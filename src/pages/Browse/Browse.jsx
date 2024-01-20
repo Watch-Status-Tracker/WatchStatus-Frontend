@@ -54,7 +54,6 @@ const Browse = () => {
       'with_runtime.lte': values.runtime ?? null,
       'release_date.lte': values.year ? new Date(values.year, 0, 0) : null,
     };
-    console.log(newParams);
     setParams(newParams);
     refetch();
   }, 250);
@@ -102,7 +101,7 @@ const Browse = () => {
             label={'Sort by'}
           />
           <Input
-            test={'browse_runtime_input'}
+            test={'browse_runtimes_input'}
             formOnChange={submitFormHandler}
             name={'runtime'}
             type={'text'}
