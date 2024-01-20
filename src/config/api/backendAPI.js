@@ -8,4 +8,10 @@ export const changePersonalData = (data) => backendClient.post(`/change-personal
 
 export const changeAdditionalData = (data) => backendClient.post(`/change-additional-data`, data);
 
-export const changePasswordData = (data) => backendClient.post(`/change-password-data`, data);
+export const changePasswordData = (data) => backendClient.post('/change-password', data);
+
+export const createList = (data) => backendClient.post(`/create-list`, data);
+
+export const getLists = () => backendClient.get(`/get-user-lists`);
+
+export const updateListPositions = (data) => backendClient.post(`/update-list-positions`, data);
