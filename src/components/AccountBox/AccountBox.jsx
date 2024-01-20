@@ -16,7 +16,6 @@ const AccountBox = () => {
   useQuery(['getCurrentUserPersonalData', personalData], () => getUserPersonalData(), {
     onSuccess: ({ data }) => {
       setPersonalData(data);
-      console.log(data);
     },
     onError: (error) => {
       toast.error('Something went wrong', error);
