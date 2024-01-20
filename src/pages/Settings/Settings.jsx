@@ -76,9 +76,21 @@ const Settings = () => {
             onFormSubmit={personalDataHandleSubmit}
           >
             <SectionHeader>Personal data</SectionHeader>
-            <Input name={'username'} label="Username" placeholder="Enter new username" />
-            <Input name={'email'} label="Email" placeholder="Enter new email" />
-            <SumbitButton type="submit">Update personal data</SumbitButton>
+            <Input
+              test={'settings_username_input'}
+              name={'username'}
+              label="Username"
+              placeholder="Enter new username"
+            />
+            <Input
+              test={'settings_email_input'}
+              name={'email'}
+              label="Email"
+              placeholder="Enter new email"
+            />
+            <SumbitButton data-test={'settings_personal_data_submit'} type="submit">
+              Update personal data
+            </SumbitButton>
           </Form>
         </Section>
         <Section>
@@ -88,14 +100,23 @@ const Settings = () => {
             onFormSubmit={additionalDataHandleSubmit}
           >
             <SectionHeader>Additional data</SectionHeader>
-            <Input name={'title'} label="Title" type={'text'} placeholder="Enter your title" />
             <Input
+              test={'settings_title_input'}
+              name={'title'}
+              label="Title"
+              type={'text'}
+              placeholder="Enter your title"
+            />
+            <Input
+              test={'settings_favourite_genre_input'}
               name={'favouriteGenre'}
               label="Favourite genre"
               type={'text'}
               placeholder="Enter your favourite genre"
             />
-            <SumbitButton type="submit">Update additional data</SumbitButton>
+            <SumbitButton data-test={'settings_additional_data_submit'} type="submit">
+              Update additional data
+            </SumbitButton>
           </Form>
         </Section>
         <Section>
@@ -106,18 +127,22 @@ const Settings = () => {
           >
             <SectionHeader>Password</SectionHeader>
             <Input
+              test={'settings_new_password_input'}
               name={'newPassword'}
               label="New password"
               type={'password'}
               placeholder="Enter new password"
             />
             <Input
+              test={'settings_confirm_new_password_input'}
               name={'confirmNewPassword'}
               label="Confirm password"
               type={'password'}
               placeholder="Confirm new password"
             />
-            <SumbitButton type="submit">Update password</SumbitButton>
+            <SumbitButton data-test={'settings_password_submit'} type="submit">
+              Update password
+            </SumbitButton>
           </Form>
         </Section>
       </SettingsContainer>

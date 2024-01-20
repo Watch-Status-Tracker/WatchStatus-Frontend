@@ -45,3 +45,17 @@ export const rankingYearInput = '[data-test="ranking_year_input"]';
 export const rankingLanguageInput = '[data-test="ranking_language_input"]';
 export const rankingUserVotesInput = '[data-test="ranking_user_votes_input"]';
 export const rankingRuntimesInput = '[data-test="ranking_runtimes_input"]';
+
+/* Settings page */
+
+export const settingsUsernameInput = '[data-test="settings_username_input"]';
+export const settingsEmailInput = '[data-test="settings_email_input"]';
+export const settingsPersonalDataSubmit = '[data-test="settings_personal_data_submit"]';
+
+export const settingsTitleInput = '[data-test="settings_title_input"]';
+export const settingsFavouriteGenreInput = '[data-test="settings_favourite_genre_input"]';
+export const settingsAdditionallDataSubmit = '[data-test="settings_additional_data_submit"]';
+
+export const settingsNewPasswordInput = '[data-test="settings_new_password_input"]';
+export const settingsConfirmPasswordInput = '[data-test="settings_confirm_new_password_input"]';
+export const settingsPasswordSubmit = '[data-test="settings_password_submit"]';
