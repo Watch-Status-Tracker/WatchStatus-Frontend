@@ -69,10 +69,10 @@ const Browse = () => {
       >
         <FormWrapper size={deviceSize}>
           <Select
+            onFormChange={submitFormHandler}
             label={'Genres'}
             name={'genre'}
             options={genresOptions}
-            onFormChange={submitFormHandler}
           />
           <Input
             formOnChange={submitFormHandler}

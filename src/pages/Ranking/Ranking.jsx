@@ -1,6 +1,7 @@
 import Card from '@components/Card/Card';
 import Form, { submitFormHandler } from '@components/Form/Form';
 import Input from '@components/Input/Input';
+import Select from '@components/Select/Select';
 import { discoverMovies } from '@config/api/moviesAPI';
 import { useMediaQuery } from '@hooks/useMediaQuery';
 import { rankingValidationSchema } from '@pages/Ranking/Ranking.schema';
@@ -12,6 +13,7 @@ import {
   NoDataPlaceholder,
   Wrapper,
 } from '@pages/Ranking/Ranking.styles';
+import { genresOptions } from '@utils/genres';
 import debounce from 'lodash.debounce';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -48,7 +50,7 @@ const Ranking = () => {
   const handleSubmit = debounce((values) => {
     const newParams = {
       language: values.language ?? null,
-      with_genres: values.genre ?? null,
+      with_genres: +values.genre.value ?? null,
       sort_by: 'vote_average.desc',
       'with_runtime.lte': values.runtime ?? null,
       'release_date.lte': values.year ? new Date(values.year, 0, 0) : null,
@@ -71,12 +73,11 @@ const Ranking = () => {
         onFormSubmit={handleSubmit}
       >
         <FormWrapper size={deviceSize}>
-          <Input
-            formOnChange={submitFormHandler}
-            name={'genre'}
-            type={'text'}
-            placeholder={'Fantasy'}
+          <Select
+            onFormChange={submitFormHandler}
             label={'Genres'}
+            name={'genre'}
+            options={genresOptions}
           />
           <Input
             formOnChange={submitFormHandler}

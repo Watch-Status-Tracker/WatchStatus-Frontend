@@ -82,6 +82,7 @@ export const SelectDropdown = styled.div`
   pointer-events: ${({ isOpen }) => (isOpen ? 'all' : 'none')};
   transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-10px)')};
   scrollbar-width: none;
+  z-index: 20;
 
   &::-webkit-scrollbar {
     display: none;

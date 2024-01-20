@@ -6,7 +6,6 @@ import { PlaygroundRoute } from '@pages/Playground/Playground.routes';
 import { PositionRoute } from '@pages/PositionPage/Position.routes';
 import { RankingRoute } from '@pages/Ranking/Ranking.routes';
 import { SettingsRoute } from '@pages/Settings/Settings.routes';
-import { SurpriseMeRoute } from '@pages/SurpriseMe/SurpriseMe.routes';
 import ProtectedRoute from '@routing/ProtectedRoute';
 import MainTemplate from '@templates/MainTemplate/MainTemplate';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
@@ -17,15 +16,7 @@ const RootRoute = {
       <MainTemplate />
     </ProtectedRoute>
   ),
-  children: [
-    PositionRoute,
-    HomeRoute,
-    MyListsRoute,
-    BrowseRoute,
-    SurpriseMeRoute,
-    RankingRoute,
-    SettingsRoute,
-  ],
+  children: [PositionRoute, HomeRoute, MyListsRoute, BrowseRoute, RankingRoute, SettingsRoute],
 };
 
 const WildcardRoute = {
