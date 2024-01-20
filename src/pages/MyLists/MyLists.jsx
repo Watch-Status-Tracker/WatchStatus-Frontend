@@ -72,17 +72,20 @@ const MyLists = () => {
   }, [userListsData]);
 
   return (
-    <Wrapper>
+    <Wrapper data-test={'my_lists_wrapper'}>
       <BentoBox>
         <HeadingWrapper>
           <Header>My lists</Header>
           <HeaderListCreator>
             <Input
+              test={'my_lists_input'}
               isLabelVisible={false}
               placeholder="List name"
               onChange={(e) => setNewListName(e.target.value)}
             />
-            <AddListButton onClick={handleAddList}>Create list</AddListButton>
+            <AddListButton data-test={'my_lists_create_list_button'} onClick={handleAddList}>
+              Create list
+            </AddListButton>
           </HeaderListCreator>
         </HeadingWrapper>
       </BentoBox>

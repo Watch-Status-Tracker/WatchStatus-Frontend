@@ -25,7 +25,7 @@ const AccountBox = () => {
 
   return (
     <Wrapper>
-      <ImgContainer></ImgContainer>
+      <ImgContainer>{personalData?.username ? personalData?.username[0] : 'U'}</ImgContainer>
       <TextContainer>
         <UserNameText>{personalData?.username ? personalData?.username : ''}</UserNameText>
         <UserInfo>{personalData?.title ? personalData?.title : ''}</UserInfo>

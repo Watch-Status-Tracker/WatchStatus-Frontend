@@ -65,7 +65,9 @@ const Login = () => {
           <FormSubmitButton type="submit" data-test={'login_submit'}>
             Submit
           </FormSubmitButton>
-          <SignUp to={registerPath}>or create your account</SignUp>
+          <SignUp data-test={'login_redirect_register'} to={registerPath}>
+            or create your account
+          </SignUp>
         </FormContent>
       </Form>
     </AuthTemplate>

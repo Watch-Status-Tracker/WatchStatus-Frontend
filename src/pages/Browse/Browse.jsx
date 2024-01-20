@@ -71,12 +71,14 @@ const Browse = () => {
       >
         <FormWrapper size={deviceSize}>
           <Select
+            test={'browse_genres_input'}
             onFormChange={submitFormHandler}
             label={'Genres'}
             name={'genre'}
             options={genresOptions}
           />
           <Input
+            test={'browse_year_input'}
             formOnChange={submitFormHandler}
             name={'year'}
             type={'number'}
@@ -84,6 +86,7 @@ const Browse = () => {
             label={'Year'}
           />
           <Input
+            test={'browse_language_input'}
             formOnChange={submitFormHandler}
             name={'language'}
             type={'text'}
@@ -91,6 +94,7 @@ const Browse = () => {
             label={'Language'}
           />
           <Input
+            test={'browse_sort_by_input'}
             formOnChange={submitFormHandler}
             name={'sort_by'}
             type={'text'}
@@ -98,6 +102,7 @@ const Browse = () => {
             label={'Sort by'}
           />
           <Input
+            test={'browse_runtime_input'}
             formOnChange={submitFormHandler}
             name={'runtime'}
             type={'text'}
