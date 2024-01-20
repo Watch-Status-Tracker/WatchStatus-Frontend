@@ -24,6 +24,7 @@ export const ImgContainer = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 10px;
+  background: ${({ theme }) => theme.color.primary[200]};
   border: 2px solid ${({ theme }) => theme.color.primary[500]};
 `;
 

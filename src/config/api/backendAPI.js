@@ -15,3 +15,5 @@ export const createList = (data) => backendClient.post(`/create-list`, data);
 export const getLists = () => backendClient.get(`/get-user-lists`);
 
 export const updateListPositions = (data) => backendClient.post(`/update-list-positions`, data);
+
+export const getUserPersonalData = () => backendClient.get(`/get-user-personal-data`);

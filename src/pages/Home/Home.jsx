@@ -80,6 +80,7 @@ const Home = () => {
       <EnhancedBentoBox size={deviceSize} title={'🗻Top of the top 🗻'}>
         {topMovies.map(({ id, popularity, original_title, poster_path, name }) => (
           <Card
+            positionId={id}
             onClick={() => navigate(`/position/${id}`)}
             size={deviceSize}
             key={`${id}-${popularity}`}
