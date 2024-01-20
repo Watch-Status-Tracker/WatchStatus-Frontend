@@ -25,7 +25,7 @@ const Register = () => {
   const { setToken } = useAuth();
   const { mutate } = useMutation((data) => register(data), {
     onError: (error) => {
-      toast.error('Invalid username or password!', error);
+      toast.error(error.data.error);
     },
     onSuccess: async (data) => {
       const user = data.data;
@@ -56,7 +56,7 @@ const Register = () => {
             type="text"
             name={'username'}
           />
-          <Input label="Email" placeholder={'Enter your email'} type="password" name={'password'} />
+          <Input label="Email" placeholder={'Enter your email'} type="email" name={'email'} />
           <Input
             label="Password"
             placeholder={'Enter your password'}
