@@ -30,7 +30,7 @@ const Card = ({
     setImageError(true);
   };
 
-  useQuery(['getListss', lists], () => getLists(), {
+  useQuery(['getListCard', lists], () => getLists(), {
     onSuccess: ({ data }) => {
       setLists(data);
     },

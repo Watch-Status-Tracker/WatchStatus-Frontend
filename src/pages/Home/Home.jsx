@@ -17,10 +17,9 @@ const Home = () => {
   const device = useMediaQuery();
   const deviceSize = device === 'desktop' ? 'large' : 'small';
 
-  useQuery(['getlists'], () => getLists(), {
+  /*  Currently watching Movies Query  */
+  useQuery(['getCurrentWatching', currentlyWatching], () => getLists(), {
     onSuccess: ({ data }) => {
-      console.log(data);
-      console.log(data);
       setCurrentlyWatching([...data[0].positions]);
     },
     onError: (error) => {
@@ -54,11 +53,11 @@ const Home = () => {
   return (
     <Wrapper>
       <EnhancedBentoBox size={deviceSize} title={'👀 Currently watching 👀'}>
-        {currentlyWatching.map(({ title, image, id }, index) => (
+        {currentlyWatching.map(({ title, image, id, positionId }, index) => (
           <Card
             noOverlay={true}
             positionId={id}
-            onClick={() => navigate(`/position/${id}`)}
+            onClick={() => navigate(`/position/${positionId}`)}
             size={deviceSize}
             key={`${title}-${index}`}
             title={title}

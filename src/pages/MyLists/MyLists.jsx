@@ -23,18 +23,22 @@ const MyLists = () => {
   const [userListsData, setUserListsData] = useState([]);
   const [newListName, setNewListName] = useState('');
 
-  const { mutate: createListMutate } = useMutation((e) => createList(e), {
-    onSuccess: () => {
-      toast.success(`List [${newListName}] created!`);
-      refetch();
-    },
-    onError: (error) => {
-      toast.error('Something went wrong', error);
-    },
-    refetchOnWindowFocus: false,
-  });
+  const { mutate: createListMutate } = useMutation(
+    ['createList', userListsData],
+    (e) => createList(e),
+    {
+      onSuccess: () => {
+        toast.success(`List [${newListName}] created!`);
+        refetch();
+      },
+      onError: (error) => {
+        toast.error('Something went wrong', error);
+      },
+      refetchOnWindowFocus: false,
+    }
+  );
 
-  const { refetch } = useQuery(['getlists'], () => getLists(), {
+  const { refetch } = useQuery(['getMyLists'], () => getLists(), {
     onSuccess: ({ data }) => {
       setUserListsData([...data]);
     },
@@ -49,7 +53,6 @@ const MyLists = () => {
     setNewListName('');
   };
 
-  console.log(userListsData);
   const generatedLists = useMemo(() => {
     return userListsData.map((list, index) => (
       <EnhancedBentoBox key={`${list.name}-${index}`} title={list.name}>
