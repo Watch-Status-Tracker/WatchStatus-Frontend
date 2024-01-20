@@ -25,7 +25,7 @@ const Register = () => {
   const { setToken } = useAuth();
   const { mutate } = useMutation((data) => register(data), {
     onError: (error) => {
-      toast.error('Invalid username or password!', error);
+      toast.error(error.data.error);
     },
     onSuccess: async (data) => {
       const user = data.data;
