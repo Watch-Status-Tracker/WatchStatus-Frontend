@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5000,
     viewportHeight: 900,
     viewportWidth: 1440,
-    env: { ...process.env },
+    env: process.env,
 
     // setupNodeEvents(on, config) {
     //   // implement node event listeners here
