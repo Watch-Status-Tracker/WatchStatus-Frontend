@@ -18,11 +18,13 @@ import debounce from 'lodash.debounce';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 const Browse = () => {
   const [searchedData, setSearchedData] = useState([]);
   const [params, setParams] = useState({});
   const device = useMediaQuery();
+  const navigate = useNavigate();
   const deviceSize = device === 'desktop' ? 'large' : 'small';
 
   const initialValues = {
@@ -107,12 +109,16 @@ const Browse = () => {
       <GridWrapper device={device}>
         {searchedData.length ? (
           searchedData.map(({ id, popularity, original_title, poster_path, name }) => (
-            <Card
-              size={deviceSize}
-              key={`${id}-${popularity}`}
-              title={original_title ? original_title : name}
-              imageUrl={`${import.meta.env.VITE_movieApiImageEndpoint}/${poster_path}`}
-            />
+            <>
+              <Card
+                positionId={id}
+                size={deviceSize}
+                onClick={() => navigate(`/position/${id}`)}
+                key={`${id}-${popularity}`}
+                title={original_title ? original_title : name}
+                imageUrl={`${import.meta.env.VITE_movieApiImageEndpoint}/${poster_path}`}
+              />
+            </>
           ))
         ) : (
           <NoDataPlaceholder>No results</NoDataPlaceholder>
