@@ -72,7 +72,7 @@ const Register = () => {
             name={'password'}
           />
           <FormSubmitButton data-test={'register_submit'} type="submit">
-            Submit
+            Create account
           </FormSubmitButton>
           <SignIn data-test={'register_redirect_login'} to={authPath}>
             Already have an account? Log in!

@@ -63,7 +63,7 @@ const Login = () => {
             name={'password'}
           />
           <FormSubmitButton type="submit" data-test={'login_submit'}>
-            Submit
+            Login
           </FormSubmitButton>
           <SignUp data-test={'login_redirect_register'} to={registerPath}>
             or create your account
