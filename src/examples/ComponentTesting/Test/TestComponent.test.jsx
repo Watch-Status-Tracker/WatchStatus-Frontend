@@ -22,7 +22,7 @@ describe('Example for TestComponent', () => {
       it is styled using styled-components theme provider
     */
     expect(getByText('Hello World')).toHaveStyle(`
-      background: rgb(255,0,0);
+      background: rgb(90,32,32);
     `);
   });
 });
