@@ -22,10 +22,11 @@ const Card = ({
   isTitleVisible = true,
   imageUrl,
   onClick,
+  providedLists = [],
 }) => {
   const [imageError, setImageError] = useState(false);
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(providedLists);
   const handleImageError = () => {
     setImageError(true);
   };
@@ -52,7 +53,7 @@ const Card = ({
 
   const handleAddPosition = (e, listId, title, image, positionId) => {
     e.stopPropagation();
-    // console.log(listId, title, image, positionId);
+
     addPositionToList({
       listId,
       title,
@@ -64,12 +65,13 @@ const Card = ({
   return (
     <Wrapper size={size} onClick={onClick}>
       <CardContainer
+        data-testid={'card-container'}
         size={size}
         onMouseEnter={() => setOverlayVisible(true)}
         onMouseLeave={() => setOverlayVisible(false)}
       >
         {noOverlay === false && lists && lists.length > 0 && (
-          <CardOptionsOverlay isVisible={overlayVisible}>
+          <CardOptionsOverlay data-testid={'card-overlay'} isVisible={overlayVisible}>
             <CardOverlayHeader>Add to list</CardOverlayHeader>
             {lists.map((list, index) => (
               <CardOption
@@ -82,7 +84,7 @@ const Card = ({
           </CardOptionsOverlay>
         )}
         {imageUrl && !imageError ? (
-          <CardImage src={imageUrl} onError={handleImageError} />
+          <CardImage alt={'card-image'} src={imageUrl} onError={handleImageError} />
         ) : (
           <CardPlaceholder>Image not found</CardPlaceholder>
         )}
@@ -98,5 +100,6 @@ Card.propTypes = {
   isTitleVisible: PropTypes.bool,
   imageUrl: PropTypes.string,
   onClick: PropTypes.func,
+  providedLists: PropTypes.array,
 };
 export default Card;
