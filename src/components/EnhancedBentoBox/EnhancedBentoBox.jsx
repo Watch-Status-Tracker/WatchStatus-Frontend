@@ -28,7 +28,9 @@ const EnhancedBentoBox = ({ title, children, size }) => {
     <BentoBox size={size}>
       <OuterBentoWrapper size={size}>
         <TopWrapper>
-          <BentoHeader size={size}>{title}</BentoHeader>
+          <BentoHeader data-test="bentoHeader" size={size}>
+            {title}
+          </BentoHeader>
           <CarouselNavigation>
             <CarouselButton direction={'left'} onClick={() => handleMoveCarousel('left')}>
               <Icon.ChevronDown />

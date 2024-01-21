@@ -29,9 +29,9 @@ const Settings = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { mutate: personalAdditionalMutate } = useMutation((data) => changeAdditionalData(data), {
+  const { mutate: additionalMutate } = useMutation((data) => changeAdditionalData(data), {
     onSuccess: () => {
-      toast.success('Personal data updated successfully');
+      toast.success('Additional data updated successfully');
     },
     onError: (error) => {
       toast.error('Something went wrong', error);
@@ -39,9 +39,9 @@ const Settings = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { mutate: personalPasswordMutate } = useMutation((data) => changePasswordData(data), {
+  const { mutate: passwordMutate } = useMutation((data) => changePasswordData(data), {
     onSuccess: () => {
-      toast.success('Personal data updated successfully');
+      toast.success('Password updated successfully');
     },
     onError: (error) => {
       toast.error('Something went wrong', error);
@@ -54,13 +54,13 @@ const Settings = () => {
   };
 
   const additionalDataHandleSubmit = (values) => {
-    personalAdditionalMutate(values);
+    additionalMutate(values);
   };
 
   const passwordDataHandleSubmit = (values) => {
     const password = { newPassword: values.newPassword };
 
-    personalPasswordMutate(password);
+    passwordMutate(password);
   };
 
   return (

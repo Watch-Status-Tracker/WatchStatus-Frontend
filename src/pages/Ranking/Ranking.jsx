@@ -67,7 +67,7 @@ const Ranking = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Header>Ranking</Header>
+        <Header data-test="rankingHeader">Ranking</Header>
       </HeadingWrapper>
       <Form
         initialValues={initialValues}
@@ -118,7 +118,7 @@ const Ranking = () => {
           />
         </FormWrapper>
       </Form>
-      <GridWrapper device={device}>
+      <GridWrapper device={device} data-test={'grid_wrapper'}>
         {searchedData.length ? (
           searchedData.map(({ id, popularity, original_title, poster_path, name }) => (
             <Card

@@ -4,7 +4,7 @@ const AuthTemplate = ({ header, children }) => {
   return (
     <Wrapper>
       <AuthContainer>
-        <AuthHeader>{header}</AuthHeader>
+        <AuthHeader data-test="authHeader">{header}</AuthHeader>
         {children}
       </AuthContainer>
     </Wrapper>

@@ -61,7 +61,7 @@ const Browse = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Header>Browse</Header>
+        <Header data-test="browseHeader">Browse</Header>
       </HeadingWrapper>
       <Form
         initialValues={initialValues}
@@ -110,7 +110,7 @@ const Browse = () => {
           />
         </FormWrapper>
       </Form>
-      <GridWrapper device={device}>
+      <GridWrapper device={device} data-test={'grid_wrapper'}>
         {searchedData.length ? (
           searchedData.map(({ id, popularity, original_title, poster_path, name }) => (
             <>
