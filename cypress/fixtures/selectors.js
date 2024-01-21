@@ -11,18 +11,18 @@ export const registerUsernameInput = '[data-test="register_username_input"]';
 export const registerEmailInput = '[data-test="register_email"]';
 export const registerPasswordInput = '[data-test="register_password"]';
 export const registerSubmit = '[data-test="register_submit"]';
-export const registerRedirectLogin = '[data-test="register_redirect_login"]';
+export const registerRedirectLogin = '[data-test="login_redirect_register"]';
 
 /* Home page */
 
 /* * Navbar * */
 
-export const navbarHomeButton = '[data-test="navbar_home_button"]';
+export const navbarHomeButton = '[data-testid="navbar_home_button"]';
 export const navbarListsButton = '[data-test="navbar_lists_button"]';
-export const navbarBrowseButton = '[data-test="navbar_browse_button"]';
+export const navbarBrowseButton = '[data-testid="navbar_browse_button"]';
 export const navbarRankingButton = '[data-test="navbar_ranking_button"]';
 export const navbarSettingsButton = '[data-test="navbar_settings_button"]';
-export const navbarLogoutButton = '[data-test="navbar_logout_button"]';
+export const navbarLogoutButton = '[data-testid="navbar_logout_button"]';
 
 /* My lists page */
 
