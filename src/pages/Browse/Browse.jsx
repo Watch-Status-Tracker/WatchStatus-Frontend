@@ -110,7 +110,7 @@ const Browse = () => {
           />
         </FormWrapper>
       </Form>
-      <GridWrapper device={device}>
+      <GridWrapper device={device} data-test={'grid_wrapper'}>
         {searchedData.length ? (
           searchedData.map(({ id, popularity, original_title, poster_path, name }) => (
             <>

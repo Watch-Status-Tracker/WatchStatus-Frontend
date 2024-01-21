@@ -74,6 +74,7 @@ export const settingsPasswordSubmit = '[data-test="settings_password_submit"]';
 /* Other */
 
 export const toastSelector = '.toast_wrapper';
+export const gridWrapper = '[data-test="grid_wrapper"]';
 
 export const testerUser = {
   username: 'tester',
