@@ -35,7 +35,7 @@ describe('My lists section display', () => {
 
   it.only('Should check if adding an item to the list works correctly', () => {
     cy.get(cardContainer).first().trigger('mouseover');
-    cy.get(' [data-testid="card-container"] > [data-testid="card-overlay"] > :nth-child(1)')
+    cy.get(' [data-testid="card-container"] > [data-testid="card-overlay"] > :nth-child(2)')
       .first()
       .click();
     cy.get(toastSelector).contains('Position added to list!');
