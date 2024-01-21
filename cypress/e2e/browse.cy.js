@@ -32,7 +32,7 @@ describe('Browse section display', () => {
     cy.get('.sc-lmoLKH').contains('Browse').and('be.visible');
   });
 
-  it.only('Should check if input fields work correctly', () => {
+  it('Should check if input fields work correctly', () => {
     cy.get(navbarBrowseButton).contains('Browse').click();
     cy.get(browseGenresInputWrapper).contains('Genres');
 
@@ -49,7 +49,9 @@ describe('Browse section display', () => {
     cy.get('.sc-bYEuID').children().should('have.length.at.least', 20);
   });
 
-  it('Should check if upon clicking one the film card it opens a film details page', () => {
+  it.only('Should check if upon clicking one the film card it opens a film details page', () => {
     cy.get(navbarBrowseButton).contains('Browse').click();
+    cy.get('.sc-bYEuID').children().first().click();
+    cy.url().should('include', '/position/');
   });
 });
