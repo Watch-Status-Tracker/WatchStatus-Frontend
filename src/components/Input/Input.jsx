@@ -25,7 +25,7 @@ const Input = ({
   };
 
   return (
-    <Wrapper width={width} size={size}>
+    <Wrapper width={width} size={size} data-test={`${test}_wrapper`}>
       {isLabelVisible && <StyledLabel>{label}</StyledLabel>}
       <InputContent size={size}>
         {icon}

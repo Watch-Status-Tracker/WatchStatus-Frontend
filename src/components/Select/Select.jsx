@@ -64,7 +64,7 @@ const Select = ({
   const generatedOptions = useMemo(() => generateOptions(), [dropdownValue]);
 
   return (
-    <OuterWrapper width={width} ref={outerWrapperRef}>
+    <OuterWrapper width={width} ref={outerWrapperRef} data-test={`${test}_wrapper`}>
       <Wrapper width={width}>
         {isLabelVisible && <Label onClick={handleOpenDropdown}>{label}</Label>}
         <SelectWrapper isOpen={isOpen} size={size} onClick={handleOpenDropdown} data-test={test}>

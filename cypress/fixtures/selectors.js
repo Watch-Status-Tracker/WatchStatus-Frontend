@@ -32,18 +32,29 @@ export const myListsWrapper = '[data-test="my_lists_wrapper"]';
 
 /* Browse page */
 export const genreDataTest = (genre) => `[data-test-value="${genre}"]`;
+
+export const browseGenresInputWrapper = '[data-test="browse_genres_input_wrapper"]';
 export const browseGenresInput = '[data-test="browse_genres_input"]';
+export const browseYearInputWrapper = '[data-test="browse_year_input_wrapper"]';
 export const browseYearInput = '[data-test="browse_year_input"]';
+export const browseLanguageInputWrapper = '[data-test="browse_language_input_wrapper"]';
 export const browseLanguageInput = '[data-test="browse_language_input"]';
+export const browseSortByInputWrapper = '[data-test="browse_sort_by_input_wrapper"]';
 export const browseSortByInput = '[data-test="browse_sort_by_input"]';
+export const browseRuntimesInputWrapper = '[data-test="browse_runtimes_input_wrapper"]';
 export const browseRuntimesInput = '[data-test="browse_runtimes_input"]';
 
 /* Ranking page */
 
+export const rankingGenresInputWrapper = '[data-test="ranking_genres_input_wrapper"]';
 export const rankingGenresInput = '[data-test="ranking_genres_input"]';
+export const rankingYearInputWrapper = '[data-test="ranking_year_input_wrapper"]';
 export const rankingYearInput = '[data-test="ranking_year_input"]';
+export const rankingLanguageInputWrapper = '[data-test="ranking_language_input_wrapper"]';
 export const rankingLanguageInput = '[data-test="ranking_language_input"]';
+export const rankingUserVotesInputWrapper = '[data-test="ranking_user_votes_input_wrapper"]';
 export const rankingUserVotesInput = '[data-test="ranking_user_votes_input"]';
+export const rankingRuntimesInputWrapper = '[data-test="ranking_runtimes_input_wrapper"]';
 export const rankingRuntimesInput = '[data-test="ranking_runtimes_input"]';
 
 /* Settings page */
@@ -63,3 +74,9 @@ export const settingsPasswordSubmit = '[data-test="settings_password_submit"]';
 /* Other */
 
 export const toastSelector = '.toast_wrapper';
+
+export const testerUser = {
+  username: 'tester',
+  email: 'tester@tester',
+  password: 'tester',
+};
