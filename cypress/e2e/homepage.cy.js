@@ -14,17 +14,17 @@ describe('Homepage display', () => {
   });
 
   it('Should check if Currently watching section displays correctly', () => {
-    cy.get(navbarHomeButton).click();
-    cy.get('.sc-bZSSAB > :nth-child(1)').contains('Currently watching');
+    cy.get(navbarHomeButton).contains('Home').click();
+    cy.get('.sc-bZSSAB > :nth-child(1)').contains('Currently watching').and('be.visible');
   });
 
   it('Should check if Trending today section displays correctly', () => {
-    cy.get(navbarHomeButton).click();
-    cy.get('.sc-bZSSAB > :nth-child(2)').contains('Trending today');
+    cy.get(navbarHomeButton).contains('Home').click();
+    cy.get('.sc-bZSSAB > :nth-child(2)').contains('Trending today').and('be.visible');
   });
 
   it('Should check if Top of the top section displays correctly', () => {
-    cy.get(navbarHomeButton).click();
-    cy.get('.sc-bZSSAB > :nth-child(3)').contains('Top of the top');
+    cy.get(navbarHomeButton).contains('Home').click();
+    cy.get('.sc-bZSSAB > :nth-child(3)').contains('Top of the top').and('be.visible');
   });
 });

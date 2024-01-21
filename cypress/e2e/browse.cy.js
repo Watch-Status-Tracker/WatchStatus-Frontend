@@ -18,12 +18,12 @@ describe('Browse section display', () => {
   });
 
   it('Should check if Browse section displays correctly', () => {
-    cy.get(navbarBrowseButton).click();
+    cy.get(navbarBrowseButton).contains('Browse').click();
     cy.get('.sc-lmoLKH').contains('Browse').and('be.visible');
   });
 
-  it.only('Should check if input fields work correctly', () => {
-    cy.get(navbarBrowseButton).click();
+  it('Should check if input fields work correctly', () => {
+    cy.get(navbarBrowseButton).contains('Browse').click();
     cy.get('.sc-dIUfKc').contains('Genres');
     cy.get('.sc-kfzCjt').click();
     cy.get('[data-test-value="Action"]').click();
@@ -39,6 +39,6 @@ describe('Browse section display', () => {
   });
 
   it('Should check if upon clicking one the film card it opens a film details page', () => {
-    cy.get(navbarBrowseButton).click();
+    cy.get(navbarBrowseButton).contains('Browse').click();
   });
 });

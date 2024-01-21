@@ -13,6 +13,11 @@ describe('Register page display', () => {
     cy.url().should('include', '/register');
   });
 
+  it('Should check if registration form displays correctly', () => {
+    cy.visit('/register');
+    cy.get('.sc-fubDmA').contains('Register').and('be.visible');
+  });
+
   it('Should check if registration function works correctly', () => {
     cy.visit('/register');
     cy.get(registerUsernameInput).type('test');
@@ -22,7 +27,7 @@ describe('Register page display', () => {
     cy.get('toast').should('have.text', 'Account created! Now you can log in!');
   });
 
-  it.only('Should check if account with the same data cannot be created twice', () => {
+  it('Should check if account with the same data cannot be created twice', () => {
     cy.visit('/register');
     cy.get(registerUsernameInput).type('test');
     cy.get(registerEmailInput).type('test@test.pl');

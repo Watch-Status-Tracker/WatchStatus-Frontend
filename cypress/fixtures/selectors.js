@@ -18,7 +18,7 @@ export const registerRedirectLogin = '[data-test="login_redirect_register"]';
 /* * Navbar * */
 
 export const navbarHomeButton = '[data-testid="navbar_home_button"]';
-export const navbarListsButton = '[data-test="navbar_lists_button"]';
+export const navbarListsButton = '[data-testid="navbar_lists_button"]';
 export const navbarBrowseButton = '[data-testid="navbar_browse_button"]';
 export const navbarRankingButton = '[data-test="navbar_ranking_button"]';
 export const navbarSettingsButton = '[data-test="navbar_settings_button"]';

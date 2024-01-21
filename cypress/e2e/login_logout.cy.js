@@ -6,6 +6,11 @@ import {
 } from '../fixtures/selectors';
 
 describe('Login and logout functions', () => {
+  it('Should check if login page displays correctly', () => {
+    cy.visit('/login');
+    cy.get('.sc-fubDmA').contains('Login').and('be.visible');
+  });
+
   it('Should check if login function works correctly', () => {
     cy.visit('/login');
     cy.get(loginUsernameInput).type('kira');
