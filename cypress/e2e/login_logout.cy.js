@@ -3,6 +3,7 @@ import {
   loginSubmit,
   loginUsernameInput,
   navbarLogoutButton,
+  toastSelector,
 } from '../fixtures/selectors';
 
 describe('Login and logout functions', () => {
@@ -16,7 +17,7 @@ describe('Login and logout functions', () => {
     cy.get(loginUsernameInput).type('kira');
     cy.get(loginPasswordInput).type('kira');
     cy.get(loginSubmit).click();
-    cy.get('toast').should('have.text', 'Succesfuly logged in!');
+    cy.get(toastSelector).should('have.text', 'Succesfuly logged in!');
   });
 
   it('Should check if logout function works correctly', () => {
@@ -25,6 +26,6 @@ describe('Login and logout functions', () => {
     cy.get(loginPasswordInput).type('kira');
     cy.get(loginSubmit).click();
     cy.get(navbarLogoutButton).click();
-    cy.get('toast').should('have.text', 'Succesfuly logged out!');
+    cy.get(toastSelector).should('have.text', 'Succesfuly logged out!');
   });
 });
