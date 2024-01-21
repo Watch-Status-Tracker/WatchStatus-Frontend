@@ -4,6 +4,7 @@ export const loginUsernameInput = '[data-test="login_input"]';
 export const loginPasswordInput = '[data-test="login_password"]';
 export const loginSubmit = '[data-test="login_submit"]';
 export const loginRedirectRegister = '[data-test="login_redirect_register"]';
+export const authHeader = '[data-test="authHeader"]';
 
 /* Register page */
 
@@ -29,9 +30,12 @@ export const navbarLogoutButton = '[data-testid="navbar_logout_button"]';
 export const myListInput = '[data-test="my_lists_input"]';
 export const myListsCreateListButton = '[data-test="my_lists_create_list_button"]';
 export const myListsWrapper = '[data-test="my_lists_wrapper"]';
+export const cardContainer = '[data-testid="card-container"]';
 
 /* Browse page */
+
 export const genreDataTest = (genre) => `[data-test-value="${genre}"]`;
+export const browseHeader = '[data-test="browseHeader"]';
 
 export const browseGenresInputWrapper = '[data-test="browse_genres_input_wrapper"]';
 export const browseGenresInput = '[data-test="browse_genres_input"]';
@@ -56,6 +60,7 @@ export const rankingUserVotesInputWrapper = '[data-test="ranking_user_votes_inpu
 export const rankingUserVotesInput = '[data-test="ranking_user_votes_input"]';
 export const rankingRuntimesInputWrapper = '[data-test="ranking_runtimes_input_wrapper"]';
 export const rankingRuntimesInput = '[data-test="ranking_runtimes_input"]';
+export const rankingHeader = '[data-test="rankingHeader"]';
 
 /* Settings page */
 

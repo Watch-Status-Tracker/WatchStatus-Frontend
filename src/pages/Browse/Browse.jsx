@@ -61,7 +61,7 @@ const Browse = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Header>Browse</Header>
+        <Header data-test="browseHeader">Browse</Header>
       </HeadingWrapper>
       <Form
         initialValues={initialValues}

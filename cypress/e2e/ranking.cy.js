@@ -7,6 +7,7 @@ import {
   navbarRankingButton,
   rankingGenresInput,
   rankingGenresInputWrapper,
+  rankingHeader,
   rankingLanguageInput,
   rankingLanguageInputWrapper,
   rankingRuntimesInput,
@@ -30,7 +31,7 @@ describe('Ranking section display', () => {
 
   it('Should check if Ranking section displays correctly', () => {
     cy.get(navbarRankingButton).contains('Ranking').click();
-    cy.get('.sc-eJMOVy').contains('Ranking').and('be.visible');
+    cy.get(rankingHeader).contains('Ranking').and('be.visible');
   });
 
   it('Should check if input fields work correctly', () => {

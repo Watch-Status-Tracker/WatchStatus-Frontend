@@ -3,13 +3,16 @@ import {
   loginSubmit,
   loginUsernameInput,
   navbarHomeButton,
+  testerUser,
 } from '../fixtures/selectors';
+
+const { username, password } = testerUser;
 
 describe('Homepage display', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.get(loginUsernameInput).type('kira');
-    cy.get(loginPasswordInput).type('kira');
+    cy.get(loginUsernameInput).type(username);
+    cy.get(loginPasswordInput).type(password);
     cy.get(loginSubmit).click();
   });
 

@@ -1,4 +1,5 @@
 import {
+  authHeader,
   registerEmailInput,
   registerPasswordInput,
   registerRedirectLogin,
@@ -19,7 +20,7 @@ describe('Register page display', () => {
 
   it('Should check if registration form displays correctly', () => {
     cy.visit('/register');
-    cy.get('.sc-fubDmA').contains('Register').and('be.visible');
+    cy.get(authHeader).contains('Register').and('be.visible');
   });
 
   it('Should check if registration function works correctly', () => {
@@ -32,7 +33,7 @@ describe('Register page display', () => {
     cy.get(toastSelector).should('have.text', 'Account created! Now you can log in!');
   });
 
-  it.only('Should check if account with the same data cannot be created twice', () => {
+  it('Should check if account with the same data cannot be created twice', () => {
     cy.visit('/register');
     const { username, password, email } = generateUser();
 

@@ -67,7 +67,7 @@ const Ranking = () => {
   return (
     <Wrapper>
       <HeadingWrapper>
-        <Header>Ranking</Header>
+        <Header data-test="rankingHeader">Ranking</Header>
       </HeadingWrapper>
       <Form
         initialValues={initialValues}
