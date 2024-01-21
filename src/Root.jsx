@@ -1,40 +1,30 @@
+import { useAuth } from '@hooks/useAuth';
+import { router } from '@routing/Router';
+import GlobalStyle from '@styles/globalStyles';
 import { GlobalThemeProvider } from '@theme/GlobalThemeProvider';
-import styled from 'styled-components';
-import GlobalStyle from './styles/globalStyles';
+import { useEffect } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RouterProvider } from 'react-router-dom';
+
+const queryClient = new QueryClient();
 
 const Root = () => {
+  const { verifyToken, token } = useAuth();
+
+  useEffect(() => {
+    verifyToken();
+  }, [token]);
+
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <GlobalThemeProvider>
         <GlobalStyle />
-        <Wrapper>
-          <Header>Vite + React</Header>
-          <SubHeader>Project starter page</SubHeader>
-        </Wrapper>
+        <RouterProvider router={router} />
+        <Toaster />
       </GlobalThemeProvider>
-    </>
+    </QueryClientProvider>
   );
 };
 
 export default Root;
-
-export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  flex-direction: column;
-  gap: 40px;
-  background: linear-gradient(white, #cfcfcf);
-`;
-
-const Header = styled.h1`
-  color: black;
-  font-weight: bold;
-`;
-
-export const SubHeader = styled.h3`
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 400;
-`;
