@@ -1,19 +1,23 @@
 import { matchers as rtlMatchers } from '@testing-library/jest-dom/matchers';
 import { cleanup, render as rtlRender } from '@testing-library/react';
 import { GlobalThemeProvider } from '@theme/GlobalThemeProvider';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { afterEach, expect } from 'vitest';
 
-const StyleWrapper = ({ children }) => {
+const AllWrappers = ({ children }) => {
+  const queryClient = new QueryClient();
   return (
     <>
-      <GlobalThemeProvider>{children}</GlobalThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <GlobalThemeProvider>{children}</GlobalThemeProvider>
+      </QueryClientProvider>
     </>
   );
 };
 
 // Render function with providers
 const renderWithProvider = (ui, options) => {
-  return rtlRender(ui, { wrapper: StyleWrapper, ...options });
+  return rtlRender(ui, { wrapper: AllWrappers, ...options });
 };
 
 /* Extends Vitest's expect method with methods from RTL */
