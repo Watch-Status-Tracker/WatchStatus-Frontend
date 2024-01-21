@@ -4,7 +4,11 @@ import {
   registerRedirectLogin,
   registerSubmit,
   registerUsernameInput,
+  toastSelector,
 } from '../fixtures/selectors';
+import { generateUser } from '../fixtures/utils';
+
+const { username, password, email } = generateUser();
 
 describe('Register page display', () => {
   it('Should check if redirect to register from login page works correctly', () => {
@@ -20,23 +24,28 @@ describe('Register page display', () => {
 
   it('Should check if registration function works correctly', () => {
     cy.visit('/register');
-    cy.get(registerUsernameInput).type('test');
-    cy.get(registerEmailInput).type('test@test.pl');
-    cy.get(registerPasswordInput).type('test');
+
+    cy.get(registerUsernameInput).type(username);
+    cy.get(registerEmailInput).type(email);
+    cy.get(registerPasswordInput).type(password);
     cy.get(registerSubmit).click();
-    cy.get('toast').should('have.text', 'Account created! Now you can log in!');
+    cy.get(toastSelector).should('have.text', 'Account created! Now you can log in!');
   });
 
-  it('Should check if account with the same data cannot be created twice', () => {
+  it.only('Should check if account with the same data cannot be created twice', () => {
     cy.visit('/register');
-    cy.get(registerUsernameInput).type('test');
-    cy.get(registerEmailInput).type('test@test.pl');
-    cy.get(registerPasswordInput).type('test');
+    const { username, password, email } = generateUser();
+
+    cy.get(registerUsernameInput).type(username);
+    cy.get(registerEmailInput).type(email);
+    cy.get(registerPasswordInput).type(password);
     cy.get(registerSubmit).click();
-    cy.get(registerUsernameInput).type('test');
-    cy.get(registerEmailInput).type('test@test.pl');
-    cy.get(registerPasswordInput).type('test');
+
+    cy.visit('/register');
+    cy.get(registerUsernameInput).type(username);
+    cy.get(registerEmailInput).type(email);
+    cy.get(registerPasswordInput).type(password);
     cy.get(registerSubmit).click();
-    cy.get('toast').should('have.text', 'A user ith this username already exists!');
+    cy.get(toastSelector).should('have.text', 'A user with this username already exists');
   });
 });

@@ -59,3 +59,7 @@ export const settingsAdditionallDataSubmit = '[data-test="settings_additional_da
 export const settingsNewPasswordInput = '[data-test="settings_new_password_input"]';
 export const settingsConfirmPasswordInput = '[data-test="settings_confirm_new_password_input"]';
 export const settingsPasswordSubmit = '[data-test="settings_password_submit"]';
+
+/* Other */
+
+export const toastSelector = '.toast_wrapper';
