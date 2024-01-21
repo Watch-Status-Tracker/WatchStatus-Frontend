@@ -16,6 +16,8 @@ export const registerRedirectLogin = '[data-test="login_redirect_register"]';
 
 /* Home page */
 
+export const bentoHeader = '[data-test="bentoHeader"]';
+
 /* * Navbar * */
 
 export const navbarHomeButton = '[data-testid="navbar_home_button"]';

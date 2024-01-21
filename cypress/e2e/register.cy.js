@@ -25,7 +25,6 @@ describe('Register page display', () => {
 
   it('Should check if registration function works correctly', () => {
     cy.visit('/register');
-
     cy.get(registerUsernameInput).type(username);
     cy.get(registerEmailInput).type(email);
     cy.get(registerPasswordInput).type(password);

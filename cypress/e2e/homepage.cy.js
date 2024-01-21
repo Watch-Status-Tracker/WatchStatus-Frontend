@@ -1,4 +1,5 @@
 import {
+  bentoHeader,
   loginPasswordInput,
   loginSubmit,
   loginUsernameInput,
@@ -18,16 +19,16 @@ describe('Homepage display', () => {
 
   it('Should check if Currently watching section displays correctly', () => {
     cy.get(navbarHomeButton).contains('Home').click();
-    cy.get('.sc-bZSSAB > :nth-child(1)').contains('Currently watching').and('be.visible');
+    cy.get(bentoHeader).contains('Currently watching').and('be.visible');
   });
 
   it('Should check if Trending today section displays correctly', () => {
     cy.get(navbarHomeButton).contains('Home').click();
-    cy.get('.sc-bZSSAB > :nth-child(2)').contains('Trending today').and('be.visible');
+    cy.get(bentoHeader).contains('Trending today').and('be.visible');
   });
 
   it('Should check if Top of the top section displays correctly', () => {
     cy.get(navbarHomeButton).contains('Home').click();
-    cy.get('.sc-bZSSAB > :nth-child(3)').contains('Top of the top').and('be.visible');
+    cy.get(bentoHeader).contains('Top of the top').and('be.visible');
   });
 });

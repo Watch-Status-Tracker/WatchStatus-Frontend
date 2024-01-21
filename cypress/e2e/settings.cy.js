@@ -52,7 +52,6 @@ describe('Settings section display', () => {
     cy.get(settingsUsernameInput).type(username);
     cy.get(settingsEmailInput).type(email);
     cy.get(settingsPersonalDataSubmit).contains('Update personal data').and('be.visible').click();
-
     cy.get(toastSelector).contains('Personal data updated successfully').and('be.visible');
   });
 
@@ -64,7 +63,6 @@ describe('Settings section display', () => {
       .contains('Update additional data')
       .and('be.visible')
       .click();
-
     cy.get(toastSelector).contains('Additional data updated successfully').and('be.visible');
   });
 
@@ -73,7 +71,6 @@ describe('Settings section display', () => {
     cy.get(settingsNewPasswordInput).type(password);
     cy.get(settingsConfirmPasswordInput).type(password);
     cy.get(settingsPasswordSubmit).contains('Update password').and('be.visible').click();
-
     cy.get(toastSelector).contains('Password updated successfully').and('be.visible');
   });
 });
