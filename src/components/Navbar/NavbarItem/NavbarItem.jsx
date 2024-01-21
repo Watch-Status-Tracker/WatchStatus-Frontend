@@ -6,7 +6,7 @@ const NavbarItem = ({ text, to, onClick, variant, icon, test }) => {
   const { pathname } = useLocation();
   const isActive = to === pathname;
   return (
-    <Wrapper isActive={isActive} data-test={test}>
+    <Wrapper isActive={isActive} data-testid={test}>
       <StyledLink isActive={isActive} to={to} onClick={onClick}>
         {icon && icon}
         {variant === 'full' && <LinkText isActive={isActive}>{text}</LinkText>}
