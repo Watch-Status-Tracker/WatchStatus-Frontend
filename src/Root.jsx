@@ -21,7 +21,11 @@ const Root = () => {
       <GlobalThemeProvider>
         <GlobalStyle />
         <RouterProvider router={router} />
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            className: 'toast_wrapper',
+          }}
+        />
       </GlobalThemeProvider>
     </QueryClientProvider>
   );
