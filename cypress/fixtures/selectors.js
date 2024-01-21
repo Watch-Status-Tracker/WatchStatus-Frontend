@@ -59,15 +59,23 @@ export const rankingRuntimesInput = '[data-test="ranking_runtimes_input"]';
 
 /* Settings page */
 
+export const settingsUsernameInputWrapper = '[data-test="settings_username_input_wrapper"]';
 export const settingsUsernameInput = '[data-test="settings_username_input"]';
+export const settingsEmailInputWrapper = '[data-test="settings_email_input_wrapper"]';
 export const settingsEmailInput = '[data-test="settings_email_input"]';
 export const settingsPersonalDataSubmit = '[data-test="settings_personal_data_submit"]';
 
+export const settingsTitleInputWrapper = '[data-test="settings_title_input_wrapper"]';
 export const settingsTitleInput = '[data-test="settings_title_input"]';
+export const settingsFavouriteGenreInputWrapper =
+  '[data-test="settings_favourite_genre_input_wrapper"]';
 export const settingsFavouriteGenreInput = '[data-test="settings_favourite_genre_input"]';
 export const settingsAdditionallDataSubmit = '[data-test="settings_additional_data_submit"]';
 
+export const settingsNewPasswordInputWrapper = '[data-test="settings_new_password_input_wrapper"]';
 export const settingsNewPasswordInput = '[data-test="settings_new_password_input"]';
+export const settingsConfirmPasswordInputWrapper =
+  '[data-test="settings_confirm_new_password_input_wrapper"]';
 export const settingsConfirmPasswordInput = '[data-test="settings_confirm_new_password_input"]';
 export const settingsPasswordSubmit = '[data-test="settings_password_submit"]';
 
@@ -80,4 +88,6 @@ export const testerUser = {
   username: 'tester',
   email: 'tester@tester',
   password: 'tester',
+  title: 'teste',
+  favouriteGenre: 'tester',
 };
