@@ -7,6 +7,7 @@ import { authPath } from '@routing/Paths';
 import AuthTemplate from '@templates/AuthTemplate/AuthTemplate';
 import toast from 'react-hot-toast';
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
 const validationSchema = yup.object({
@@ -23,6 +24,7 @@ const initialValues = {
 
 const Register = () => {
   const { setToken } = useAuth();
+  const navigate = useNavigate();
   const { mutate } = useMutation((data) => register(data), {
     onError: (error) => {
       toast.error(error.data.error);
@@ -30,6 +32,7 @@ const Register = () => {
     onSuccess: async (data) => {
       const user = data.data;
       handleLoginSuccess();
+      navigate(authPath);
       setToken(user);
     },
   });
