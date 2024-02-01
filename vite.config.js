@@ -17,12 +17,12 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/movieAPI': {
-        target: process.env.VITE_movieApiEndpoint,
+        target: 'https://api.themoviedb.org/3/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/movieAPI/, ''),
       },
       '/backendAPI': {
-        target: process.env.VITE_backendEndpoint,
+        target: 'https://watchstatusbe.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/backendAPI/, ''),
       },
