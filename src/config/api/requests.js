@@ -2,7 +2,7 @@ import { authPath } from '@routing/Paths';
 import axios from 'axios';
 
 export const movieClient = axios.create({
-  baseURL: '/movieAPI',
+  baseURL: 'https://api.themoviedb.org/3',
   headers: {
     Accept: 'text/plain',
     'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const movieClient = axios.create({
 });
 
 export const backendClient = axios.create({
-  baseURL: '/backendAPI',
+  baseURL: 'https://watchstatusbe.onrender.com',
   headers: {
     Accept: 'text/plain',
     'Content-Type': 'application/json',
