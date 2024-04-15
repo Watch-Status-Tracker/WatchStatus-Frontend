@@ -1,4 +1,6 @@
 # WatchStatus - Frontend
+<img src="https://github.com/Watch-Status-Tracker/WatchStatus-Frontend/assets/65687304/396e1c15-3566-4f45-b1c2-e50598cef7dc" width=100% />
+
 
 ### Stack:
 
